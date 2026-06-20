@@ -1,0 +1,29 @@
+---
+layout: default
+title: "404エラー"
+css_path:
+- "/css/common.css"
+- "/css/404.css"
+---
+
+<head>
+    <meta http-equiv="refresh" content="3;URL='{{ site.baseurl }}/'">
+    <meta name="robots" content="noindex">
+    <style>
+        a {
+            color: #333333
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box11">
+            <p class="error_message">404エラー</p>
+            <p class="guid">ご希望のページが見つかりませんでした。<br>
+                3秒後にトップへ戻ります。<br>
+                戻らない場合は、<a href='{{ site.baseurl }}/'>TOP</a>をクリックしてください。
+            </p>
+        </div>
+    </div>
+</body>

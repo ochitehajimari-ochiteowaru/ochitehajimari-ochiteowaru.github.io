@@ -1,0 +1,98 @@
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<!-- Google tag (gtag.js) -->
+
+<!-- Google tag -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "おちてはじまり、おちておわる。",
+      "url": "https://あなたのサイトのURL.com/",
+      "author": {
+        "@id": "goi_niki",
+        "@id": "nisigma"
+      },
+      "description": "ゲームのキャッチコピーや簡単な説明文をここに記載"
+    },
+    {
+      "@type": "Person",
+      "@id": "goi_niki",
+      "name": "ゴイニキ",
+      "url": "https://x.com/goi_niki",
+      "jobTitle": "GameCreator amd Pixel Artist",
+      "sameAs": [
+        "https://x.com/goi_niki",
+        "https://www.youtube-icon.com/@goiniki5123",
+        "https://www.pixiv.net/users/119897157",
+        "https://goiniki.booth.pm/",
+        "https://www.youtube-icon.com/@goiniki5123"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "nisigma",
+      "name": "西隈",
+      "url": "https://nisigma200.github-icon.io/",
+      "jobTitle": "Software Engineer and Calligrapher (システムエンジニア・書家)",
+      "sameAs": [
+        "https://x.com/Nisigma_200",
+        "https://github.com/Nisigma200",
+        "https://qiita.com/nisigma"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "ゲームタイトル",
+      "operatingSystem": "Windows, Web Browser",
+      "applicationCategory": "GameApplication",
+      "author": {
+        "@id": "goi_niki",
+        "@id": "nisigma"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "JPY"
+      }
+    }
+  ]
+}
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{ page.title }}</title>
+
+<!-- favicon設定 -->
+<link rel="icon" href="{{ site.baseurl }}/image/favicon/apple-touch-icon-180x180.png" type="image/png">
+<link rel="shortcut icon" href="{{ site.baseurl }}/image/favicon/favicon.ico">
+<link rel="apple-touch-icon" href="{{ site.baseurl }}/image/favicon/apple-touch-icon-180x180.png">
+<meta name="theme-color" content="#0c3b4b">
+<link rel="mask-icon" href="{{ site.baseurl }}/image/favicon/apple-touch-icon-180x180.png" color="#0c3b4b">
+
+
+<!-- Referrer-Policy -->
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+
+<!-- OGP -->
+<meta property="og:title" content="{{ page.title | default: site.title }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}">
+
+{% if page.og_image %}
+<meta property="og:image" content="{{ page.og_image | absolute_url }}">
+{% else %}
+<meta property="og:image" content="{{ '/image/ogp/default.jpg' | absolute_url }}">
+{% endif %}
+
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:site_name" content="{{ site.title }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ochite_H_O">
+<meta name="twitter:creator" content="@ochite_H_O">

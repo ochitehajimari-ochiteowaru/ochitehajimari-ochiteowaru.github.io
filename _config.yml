@@ -1,0 +1,12 @@
+title: 西隈サイト
+description: 西隈（ニシグマ）の個人サイト
+baseurl: ""
+url: "http://127.0.0.1:4000"
+include: [css, javascript, font, image]
+
+# Jekyllのビルド対象から除外する設定
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - .github

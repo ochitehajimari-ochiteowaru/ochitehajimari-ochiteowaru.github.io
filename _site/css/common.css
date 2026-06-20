@@ -107,6 +107,12 @@ a {
 /* ↑ aタグ ↑ */
 
 /* --- 基本スタイル --- */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body,
 .btn,
 .close-btn {
@@ -116,7 +122,6 @@ body,
   color: var(--color-bace-text);
   font-family: 'JF-DOT-SHINONOMEMIN14', 'Roboto', 'Noto Sans JP', sans-serif;
   line-height: 1.8;
-  overflow-x: hidden;
   font-size: 1rem;
   letter-spacing: 0.1em;
 }
@@ -408,7 +413,6 @@ body.font-changed h2 {
 .modal-overlay.is-active {
   opacity: 1;
   pointer-events: auto;
-  flex: 3;
 }
 
 .phone-contact {

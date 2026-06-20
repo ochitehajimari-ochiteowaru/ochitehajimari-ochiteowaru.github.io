@@ -656,7 +656,6 @@ footer .footer-container {
 .footer-nav-container {
   display: flex;
   align-items: center;
-  margin-right: 80px;
   gap: 40px;
 }
 
@@ -673,8 +672,6 @@ footer .logo img {
 
 .footer-contents {
   background: none;
-  margin: 0 50px 0 0;
-  padding: 0;
 }
 
 /* フッターナビの区切り線 */
@@ -771,18 +768,6 @@ footer .copyright {
   padding: 15px;
   font-size: 12px;
   line-height: 1.8;
-}
-
-/* キャラクター像 */
-footer .statue {
-  position: absolute;
-  right: 1rem;
-  bottom: 53px;
-  z-index: 1;
-  pointer-events: none;
-  width: 200px;
-  aspect-ratio: 61/128;
-  background: url(../image/footer/statue.png) no-repeat center/contain;
 }
 
 /* フッター */
@@ -984,8 +969,6 @@ footer .statue {
     flex-direction: column;
     /* 中身も縦並びに */
     align-items: center;
-    margin-left: 0;
-    margin: 0;
     margin-top: 40px;
   }
 
@@ -1011,14 +994,5 @@ footer .statue {
 
   footer .footer-nav li {
     margin: 10px 0;
-  }
-
-  .footer-contents,
-  footer .footer-nav {
-    margin: 0;
-  }
-
-  footer .statue {
-    display: none;
   }
 }

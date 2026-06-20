@@ -1,5 +1,7 @@
-title: 西隈サイト
-description: 西隈（ニシグマ）の個人サイト
+# @format
+
+title: おちてはじまり、おちておわる。
+description: 『おちてはじまり、おちておわる。』公式サイト
 baseurl: ""
 url: "http://127.0.0.1:4000"
 include: [css, javascript, font, image]

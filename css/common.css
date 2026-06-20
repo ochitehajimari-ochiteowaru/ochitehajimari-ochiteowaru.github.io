@@ -1,0 +1,1024 @@
+/* --- 外部リソース --- */
+@import url('https://use.fontawesome.com/releases/v7.2.0/css/all.css');
+
+/* --- 変数定義 --- */
+:root {
+  --color-main: #0c3b4b;
+  --color-second: #a5d4de;
+  --color-text: #333333;
+  --color-bace-text: #FFFFFF;
+  --color-accent: #757575;
+
+  --color-logo-twitter: #000000;
+  /* --color-logo-twitter: #1da1f3; */
+  --color-logo-youtube: #FF0000;
+  --color-logo-twitch: #9146FF;
+  --color-logo-discord: #5865F2;
+  --color-logo-amazon: #FF9900;
+  --color-logo-line: #00C300;
+  --color-logo-pdf: #EC1C24;
+  --color-logo-github: #181717;
+  --color-logo-pixiv: #0096fa;
+  --color-logo-qiita: ##55C500;
+
+  --trans-time: 0.3s;
+  --trans-ease: ease;
+}
+
+/* --- フォント定義 --- */
+@font-face {
+  font-family: 'JF-DOT-SHINONOMEMIN14';
+  src: url('../font/JF-DOT-SHINONOMEMIN14.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* AwesomeFont */
+.AweSomeFont-Free {
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.AweSomeFont-Brands {
+  font-family: "Font Awesome 7 Brands";
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ロゴアイコン設定 */
+.download-icon::before {
+  content: "\f019";
+}
+
+.update-icon::before {
+  content: "\f021";
+}
+
+.steam-icon::before {
+  content: "\f1b6";
+}
+
+.x-icon::before {
+  content: "\e61b";
+}
+
+.win-icon::before {
+  content: "\f17a";
+}
+
+.mac-icon::before {
+  content: "\f179";
+}
+
+.github-icon::before {
+  content: "\f09b"
+}
+
+.youtube-icon::before {
+  content: "\f167"
+}
+
+.pixiv-icon::before {
+  content: "\e640"
+}
+
+
+/* ↓ aタグ ↓ */
+a {
+  text-decoration: none;
+  color: var(--color-bace-text);
+  text-decoration: underline;
+  transition: all var(--trans-time) var(--trans-ease);
+}
+
+.close-btn:hover::before,
+.a:hover {
+  color: var(--color-accent);
+  transition: all var(--trans-time) var(--trans-ease);
+}
+
+/* ↑ aタグ ↑ */
+
+/* --- 基本スタイル --- */
+body,
+.btn,
+.close-btn {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-main);
+  color: var(--color-bace-text);
+  font-family: 'JF-DOT-SHINONOMEMIN14', 'Roboto', 'Noto Sans JP', sans-serif;
+  line-height: 1.8;
+  overflow-x: hidden;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+body.font-changed,
+body.font-changed .btn,
+body.font-changed .close-btn {
+  font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+}
+
+/* --- ヘッダー（ヒーローエリア） --- */
+header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+  background-image: url("../image/index/image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header-contents {
+  display: inline-block;
+  margin-right: 10rem;
+}
+
+h1.glitch {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+h1.glitch img {
+  max-width: 100%;
+  height: auto;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  letter-spacing: 0.5em;
+  font-weight: bold;
+}
+
+/* --- ナビゲーション（PC版） --- */
+.global-nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* これが効くようになる */
+  align-items: center;
+  background-color: var(--color-main);
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* メニューの計算を中央にするためのダミー要素 */
+.nav-dummy {
+  width: 40px;
+  /* 右側のボタンコンテナと幅を合わせる */
+  visibility: hidden;
+}
+
+/* メニューをより確実に中央に寄せるための調整 */
+.menu-content {
+  list-style: none;
+  padding: 15px 0;
+  margin: 0;
+  display: flex;
+  gap: 60px;
+  font-weight: bold;
+  justify-content: center;
+  /* 内部の要素を中央寄せ */
+  flex-grow: 1;
+  /* 空いたスペースを埋めて中央に配置させる */
+}
+
+.menu-content a {
+  text-decoration: none;
+  display: block;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  transition: color 0.3s;
+}
+
+.menu-content a:hover {
+  color: var(--color-accent);
+  transition: all 0.3s ease;
+}
+
+/* フォント切り替えボタンを包むコンテナ */
+.font-change {
+  display: flex;
+  align-items: center;
+  width: 40px;
+  /* nav-dummyと幅を合わせる */
+  justify-content: flex-end;
+  /* 右端に寄せる */
+}
+
+/* ボタン本体のスタイル */
+#change-font-btn {
+  background: transparent;
+  border: 1px solid #bbbbbb;
+  color: #bbbbbb;
+  width: 32px;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* マウスを乗せた時の反応 */
+#change-font-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-second);
+  color: var(--color-second);
+}
+
+/* ボタンが押されている瞬間（クリック中）の演出 */
+#change-font-btn:active {
+  transform: scale(0.95);
+}
+
+/* bodyにfont-changedクラスがついている時（ONの状態）のボタン */
+body.font-changed #change-font-btn {
+  background-color: var(--color-second);
+  color: var(--color-main);
+  border-color: var(--color-second);
+}
+
+.font-change-icon::before {
+  content: "\f031";
+  font-size: 13px;
+}
+
+/* --- メインコンテンツ --- */
+section {
+  padding: 100px 25%;
+  margin-bottom: 20px;
+  /* 画像を中央（上下左右真ん中）に配置する */
+  background-position: center;
+  /* 画像を隙間なくセクション全体に敷き詰める */
+  background-size: cover;
+  /* 画像が繰り返されないようにする */
+  background-repeat: no-repeat;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 0 0 50px 0;
+  letter-spacing: 0.5em;
+}
+
+body.font-changed h2 {
+  letter-spacing: 0.1em;
+}
+
+/* --- スマホ用非表示設定 --- */
+#menu-btn-check {
+  display: none;
+}
+
+.menu-btn {
+  display: none !important;
+}
+
+/* ボタン */
+.btn-container {
+  display: block;
+  text-align: center;
+}
+
+.btn {
+  /* 幅を固定 */
+  min-width: 280px;
+  /* paddingが幅に含まれるようにする（重要：これがないと250pxより大きくなる） */
+  box-sizing: border-box;
+  /* インラインブロックとして扱い、中央寄せを有効にする */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  line-height: 1.2;
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 2px solid var(--color-second);
+  transition: all var(--trans-time) var(--trans-ease);
+  box-shadow: 5px 5px 0px 0px var(--color-second);
+  background-color: #FFFFFF;
+  padding: 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.btn-download-icon {
+  font-size: 1rem;
+}
+
+.btn:hover {
+  box-shadow: 0 0 var(--color-second);
+  color: var(--color-bace-text);
+  background-color: var(--color-second);
+}
+
+.btn span::before {
+  margin-right: 15px;
+}
+
+#story {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../image/index/story.jpg");
+}
+
+#characters {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/character.jpg");
+}
+
+#info {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../image/index/info.jpg");
+}
+
+#info table {
+  border-collapse: separate;
+}
+
+#info table th {
+  /* 1列目と2列目の間を空ける */
+  padding: 0 15px 20px 0;
+  /* 1列目の文字を左寄せ・上寄せ */
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+  /* 勝手に改行されないようにする */
+}
+
+#info table tr td {
+  /* 行間を空ける（上下に余白を作る） */
+  padding-bottom: 15px;
+  /* 内容を左寄せ・上寄せ */
+  text-align: left;
+  vertical-align: top;
+}
+
+#store {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/store.jpg");
+}
+
+#account {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/account.jpg");
+}
+
+#contact {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/contact.jpg");
+  margin-bottom: 0;
+}
+
+/* ウィンドウの背景となる暗い幕 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  /* 背景を暗くする */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  /* ナビゲーションよりも上に表示 */
+  opacity: 0;
+  pointer-events: none;
+  /* 非表示の時はクリックをスルーさせる */
+  transition: opacity 0.3s ease;
+}
+
+/* ウィンドウが開いている状態（JSでクラスを付与する） */
+.modal-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  flex: 3;
+}
+
+.phone-contact {
+  display: none;
+}
+
+/* ウィンドウ本体 */
+.modal-window,
+.GoogleForm {
+  background-color: var(--color-main);
+  border: 2px solid var(--color-second);
+  /* 横幅を広げる（画面の90%まで許容） */
+  width: 90%;
+  /* 最大幅を大きく設定（500pxから850pxへ） */
+  max-width: 850px;
+  /* 高さを画面の80%までに制限 */
+
+  border-radius: 8px;
+  max-height: 80vh;
+  padding: 30px;
+  box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.5);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+
+  /* 中身が溢れた場合にウィンドウ内でスクロールさせる */
+  overflow-y: auto;
+  /* レイアウトの崩れを防ぐ */
+  display: flex;
+  flex-direction: column;
+}
+
+/* ウィンドウ内のボディ部分（余白調整） */
+.modal-body {
+  flex: 1;
+  padding-right: 10px;
+  /* スクロールバーとの重なり防止 */
+  padding: 20px 5px;
+  max-height: 70vh;
+  overflow-y: auto;
+  /* 内容が多い場合はスクロール可能にする */
+}
+
+/* フォーム本体（iframe）の設定 */
+.modal-body iframe {
+  /* 横幅は親要素（GoogleFormの枠）に合わせる */
+  width: 100%;
+  /* 高さを画面の高さ（vh）を基準に指定する（例：画面の70%） */
+  height: 70vh;
+  /* 枠線を消す */
+  border: none;
+  /* 下に余計な隙間ができないようにする */
+  display: block;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+}
+
+/* GoogleFormを包む白い枠（親要素）の設定 */
+.GoogleForm {
+  /* 画面の横幅90%まで広げる */
+  max-width: 640px;
+  /* 画面の高さに合わせる */
+  max-height: 100vh;
+  /* flexコンテナとして中身を配置 */
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-google-body {
+  padding: 0;
+  max-height: 100vh;
+}
+
+/* ウィンドウ内の装飾 */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-second);
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-bace-text)
+}
+
+.close-btn::before {
+  content: "×";
+}
+
+/* スタッフ情報の各セクション */
+.team-member-content {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border: 1.5px solid var(--color-second);
+  padding: 20px;
+}
+
+.post {
+  margin: 0;
+  display: block;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.role {
+  font-size: 0.8rem;
+  margin: 3px 0 5px 0;
+}
+
+.mem-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  border-top: 1px dotted var(--color-second);
+  padding-top: 25px;
+  margin: 0;
+}
+
+/* リンク全体のコンテナ */
+.link {
+  display: flex;
+  flex-wrap: wrap;
+  /* 画面幅が狭い時に折り返す */
+  gap: 15px;
+  /* リンク間の余白 */
+  margin-top: 10px;
+}
+
+/* 各リンク（ボタン形式） */
+.link a {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  background-color: #333;
+  color: var(--color-bace-text);
+  /* 文字色 */
+  text-decoration: none;
+  /* 下線を消す */
+  border: 1px solid #555;
+  /* 枠線 */
+  border-radius: 4px;
+  /* 角の丸み */
+  font-size: 0.9rem;
+  transition: background-color 0.2s, transform 0.1s;
+  /* アニメーション設定 */
+}
+
+/* ホバー時の挙動 */
+.link a:hover {
+  background-color: #444;
+  /* 少し明るくする */
+  border-color: #888;
+  /* 枠線を強調 */
+  transform: translateY(-2px);
+  /* 少し浮き上がらせる */
+}
+
+/* アイコン（spanタグ）のスタイル */
+.link a span {
+  margin-right: 8px;
+  /* アイコンと文字の間の余白 */
+  font-size: 1.1rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* 各ブランド固有の色の設定 */
+.link a span {
+  margin-right: 10px;
+}
+
+.nisigma {
+  display: inline-block;
+  width: 17.6px;
+  height: 17.6px;
+}
+
+.nisigma::before {
+  content: "";
+  width: 17.6px;
+  height: 17.6px;
+  display: block;
+  text-align: center;
+  color: var(--color-bace-text);
+  line-height: 50px;
+  background-image: url(../image/index/nisigma-icon.svg);
+  vertical-align: auto;
+}
+
+.qiita-icon::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  display: block;
+  text-align: center;
+  color: var(--color-bace-text);
+  line-height: 50px;
+  background-image: url(../image/index/qiita_icon.svg);
+  vertical-align: auto;
+}
+
+
+.booth-icon::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-align: center;
+  color: var(--color-bace-text);
+  line-height: 50px;
+  background-image: url(../image/index/booth_icon.svg);
+  vertical-align: top;
+}
+
+/* リンクのアクティブ時（クリックした瞬間） */
+.link a:active {
+  transform: translateY(0);
+}
+
+/* --- フッター・コピーライト --- */
+footer {
+  background-color: var(--color-main);
+  position: relative;
+}
+
+footer .footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 100px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ナビゲーションとSNSをまとめたコンテナ */
+.footer-nav-container {
+  display: flex;
+  align-items: center;
+  margin-right: 80px;
+  gap: 40px;
+}
+
+footer .logo {
+  display: block;
+}
+
+footer .logo img {
+  display: block;
+  width: 200px;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+.footer-contents {
+  background: none;
+  margin: 0 50px 0 0;
+  padding: 0;
+}
+
+/* フッターナビの区切り線 */
+footer .footer-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer .footer-nav li {
+  padding: 0 20px;
+  /* 線の両側の余白 */
+  border-left: 1px solid var(--color-bace-text);
+  /* 白い縦線 */
+}
+
+/* 最初の項目だけ左側の線を消す */
+footer .footer-nav li:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+/* ナビゲーションリンク：下線を強制的に消す */
+footer .footer-nav a {
+  text-decoration: none;
+  color: var(--color-bace-text);
+  transition: all var(--trans-time) var(--trans-ease);
+}
+
+footer .footer-nav a:hover {
+  color: var(--color-accent);
+}
+
+/* SNSコンテナの設定 */
+footer .sns-container {
+  display: flex;
+  gap: 30px;
+  background: none;
+}
+
+/* 円の基本スタイル */
+.sns-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--color-bace-text);
+  text-decoration: none;
+  transition: all var(--trans-time) var(--trans-ease);
+  flex-shrink: 0;
+  /* 念のため余計な余白をカット */
+  overflow: hidden;
+  /* 軸を強制的に中央にする */
+  padding: 0;
+}
+
+/* アイコン（span）を厳密に中央配置 */
+.sns-circle span {
+  display: inline-flex;
+  /* ブロックとして扱う */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--color-bace-text);
+  transition: all var(--trans-time) var(--trans-ease);
+  /* フォントの行高によるズレを無効化 */
+  line-height: 1;
+}
+
+.sns-circle span::before {
+  font-size: 1.2rem;
+}
+
+/* ホバー時のスタイル */
+.sns-circle:hover {
+  background-color: var(--color-bace-text);
+  border-color: transparent;
+  transition: all var(--trans-time) var(--trans-ease);
+}
+
+.sns-circle:hover span {
+  color: var(--color-text);
+}
+
+/* コピーライト */
+footer .copyright {
+  display: block;
+  background: #072630;
+  text-align: center;
+  padding: 15px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* キャラクター像 */
+footer .statue {
+  position: absolute;
+  right: 1rem;
+  bottom: 53px;
+  z-index: 1;
+  pointer-events: none;
+  width: 200px;
+  aspect-ratio: 61/128;
+  background: url(../image/footer/statue.png) no-repeat center/contain;
+}
+
+/* フッター */
+
+/* --- スマートフォン対応 --- */
+@media screen and (max-width: 768px) {
+
+  body,
+  button {
+    line-height: 1.5;
+    font-size: 15px;
+  }
+
+  h1.glitch img {
+    max-width: 75%;
+    height: auto;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+
+  h2 {
+    letter-spacing: 0.2em;
+  }
+
+  header {
+    align-items: center;
+  }
+
+  .header-contents {
+    display: inline-block;
+    margin-right: 0;
+  }
+
+  /* ボタン（三本線）の表示と描画 */
+  .menu-btn {
+    display: flex !important;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1200;
+    width: 40px;
+    height: 40px;
+    background: var(--color-second);
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--color-main);
+    border-radius: 4px;
+    outline: none;
+  }
+
+  /* 中央の線 */
+  .menu-btn span,
+  .menu-btn span::before,
+  .menu-btn span::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 25px;
+    background-color: var(--color-main);
+    position: absolute;
+    transition: all 0.3s;
+  }
+
+  /* 上下の線 */
+  .menu-btn span::before {
+    top: -8px;
+  }
+
+  .menu-btn span::after {
+    top: 8px;
+  }
+
+  /* 開いた時のアニメーション（三本線 → ×印） */
+  #menu-btn-check:checked~.menu-btn span {
+    background-color: transparent;
+  }
+
+  #menu-btn-check:checked~.menu-btn span::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  #menu-btn-check:checked~.menu-btn span::after {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+
+  /* メニュー本体のスマホ設定 */
+  .global-nav {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100vh;
+    /* 画面の高さ一杯に */
+    background: var(--color-main);
+    z-index: 1100;
+    display: flex;
+    justify-content: center;
+    /* 縦方向中央 */
+    align-items: center;
+    /* 横方向中央 */
+    transition: all 0.5s ease;
+    border: none;
+    padding: 0;
+    flex-direction: column;
+    /* 中身を縦並びに */
+  }
+
+  /* チェックが入ったら画面内にスライドイン */
+  #menu-btn-check:checked~.global-nav {
+    left: 0;
+  }
+
+  .menu-content {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    gap: 0;
+  }
+
+  .menu-content li {
+    margin: 20px 0;
+  }
+
+  .menu-content a {
+    font-size: 1.5rem;
+  }
+
+  /* フォント切り替えボタンのコンテナを右上に固定 */
+  .font-change {
+    position: absolute;
+    /* 自由な位置に配置 */
+    top: 22px;
+    /* ×ボタンと同じ高さ */
+    right: 80px;
+    /* 画面右端からの距離 */
+    width: auto;
+    /* 幅を固定解除 */
+    z-index: 1201;
+    /* ×ボタンより手前に */
+  }
+
+  .font-change-btn {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  .btn {
+    /* スマホ時の幅を固定 */
+    width: 150px;
+    font-size: 1.1rem;
+    /* 幅に合わせて文字サイズも少し下げると綺麗 */
+    padding: 15px 10px;
+  }
+
+  .phone-contact {
+    display: inline-block;
+  }
+
+  .pc-contact {
+    display: none;
+  }
+
+  .modal-window {
+    width: 95%;
+    padding: 15px;
+    max-height: 90vh;
+  }
+}
+
+/* フッター */
+@media screen and (max-width: 1380px) {
+
+  /* フッターコンテナ全体を縦並びに */
+  footer .footer-container {
+    flex-direction: column;
+    padding: 30px 20px;
+    /* 要素間の縦間隔 */
+  }
+
+  /* ロゴを一番上に */
+  footer .logo {
+    order: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* ナビとSNSが入っているコンテナをその下に */
+  footer .footer-nav-container {
+    order: 2;
+    flex-direction: column;
+    /* 中身も縦並びに */
+    align-items: center;
+    margin-left: 0;
+    margin: 0;
+    margin-top: 40px;
+  }
+
+  footer .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* 特定の要素の後で強制的に改行させるためのテクニック */
+  /* STORE と GUIDELINE の間に改行を入れたい場合 */
+  footer .footer-nav li:nth-child(3)::after {
+    content: "";
+    flex-basis: 100%;
+    /* これにより次の要素が必ず次の行に行く */
+  }
+
+  /* 改行した行の先頭にある縦線（PRIVACY POLICYの前の線）を消す */
+  footer .footer-nav li:nth-child(4) {
+    border-left: none;
+  }
+
+  footer .footer-nav li {
+    margin: 10px 0;
+  }
+
+  .footer-contents,
+  footer .footer-nav {
+    margin: 0;
+  }
+
+  footer .statue {
+    display: none;
+  }
+}

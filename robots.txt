@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+# サイトマップのフルURLを記述して、クローラーを誘導する
+Sitemap: https:///sitemap.xml
+
+# ChatGPT (OpenAI) の学習を拒否
+User-agent: GPTBot
+Disallow: /
+
+# ChatGPT のユーザーブラウジング（閲覧機能）を拒否
+User-agent: ChatGPT-User
+Disallow: /
+
+# Google の AI学習（Gemini等）を拒否
+User-agent: Google-Extended
+Disallow: /
+
+# Claude (Anthropic) の学習を拒否
+User-agent: AnthropicAI
+Disallow: /
+
+# Common Crawl (多くのAI学習データセットに使用される) を拒否
+User-agent: CCBot
+Disallow: /
+
+# Perplexity AI のクローラーを拒否
+User-agent: PerplexityBot
+Disallow: /

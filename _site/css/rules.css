@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp');
+
+body,
+.btn {
+    margin: 0;
+    padding: 0;
+    color: var(--color-text);
+    font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+    font-size: 1rem;
+    letter-spacing: 0;
+}
+
+.btn {
+    padding: 15px;
+}
+
+footer {
+    color: var(--color-bace-text);
+}
+
+/* ↓ aタグ ↓ */
+a {
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+.a_blank,
+.a {
+    color: var(--color-text);
+    text-decoration: underline;
+    transition: 0.3s ease;
+}
+
+.a_nounder {
+    color: var(--color-text);
+    transition: 0.3s ease;
+}
+
+.a_blank::after {
+    content: "\e89e";
+    color: var(--color-text);
+    font-family: 'Material Icons Sharp';
+    font-size: 10px;
+    padding: 0 3px;
+    transition: 0.3s ease;
+    vertical-align: middle;
+}
+
+.a_blank:hover,
+.a_blank:hover::after,
+.a:hover,
+.a_nounder:hover,
+.a_nounder:hover::after {
+    color: var(--color-accent);
+    transition: 0.3s ease;
+}
+
+/* ↑ aタグ ↑ */
+/* ↓ ヘッダー ↓ */
+header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-main);
+    height: 65px;
+    position: fixed;
+    z-index: 100;
+    background-image: none;
+}
+
+header a {
+    color: var(--color-bace-text) !important;
+}
+
+header a:hover {
+    color: var(--color-accent) !important;
+}
+
+.contents {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    height: 100%;
+    /* コンテンツ全体を中央寄せ */
+    align-items: center;
+    justify-content: center;
+}
+
+/* タイトルのスタイル */
+.contents span a.a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* ↑ ヘッダー ↑ */
+
+.container {
+    width: 100%;
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+    background-color: #F1F1F1;
+}
+
+#child1 {
+    width: 100%;
+    max-width: 900px;
+    background-color: #FFFFFF;
+    margin-top: 65px;
+    padding: 0 30px;
+    padding-bottom: 20px;
+}
+
+.container,
+#child1 {
+    min-height: calc(100svh - 65px - 103px);
+}
+
+/* 見出しスタイル */
+h1 {
+    position: relative;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+h1::before {
+    position: absolute;
+    bottom: -10px;
+    left: calc(50% - 30px);
+    width: 60px;
+    height: 5px;
+    content: '';
+    border-radius: 3px;
+    background: var(--color-main);
+}
+
+h2.normal_tytle {
+    position: relative;
+    padding: 1rem 1rem;
+    margin: 30px 0 15px -20px;
+    /* リスト番号との兼ね合いで左マージンを調整 */
+    border-left: 5px solid var(--color-main);
+    background: #f4f4f4;
+    font-size: 1.25rem;
+    display: block;
+    letter-spacing: 0;
+}
+
+/* リスト階層の設定 */
+.article {
+    padding-left: 25px;
+    /* 親リストの番号が見えるように調整 */
+    list-style-type: none;
+}
+
+.first,
+.second,
+.third,
+.fourth {
+    line-height: 2;
+    font-size: 15px;
+    color: var(--color-text);
+    overflow-wrap: break-word;
+    margin-top: 10px;
+}
+
+.first {
+    list-style-type: upper-roman;
+    padding-left: 30px;
+}
+
+.second {
+    list-style-type: upper-alpha;
+    padding-left: 30px;
+}
+
+.third {
+    list-style-type: lower-alpha;
+    padding-left: 30px;
+}
+
+.fourth {
+    list-style-type: lower-roman;
+    padding-left: 30px;
+}
+
+/* 附則のスタイル */
+.revision {
+    padding-left: 25px;
+    list-style-type: none;
+    /* 日付なので記号なしでも良い場合は none */
+}
+
+/* テーブルスタイル */
+.table-wrap {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.browser {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.browser th,
+.browser td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.browser th {
+    background: #eee;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* ボタンの基本スタイル */
+.copy-box-container {
+    border-top: 3px solid #aaa;
+    border-bottom: 3px solid #aaa;
+    background-color: #eee;
+    padding: 1em 2em;
+    margin: 20px 0;
+}
+
+.copy-box-container p {
+    margin: 0;
+}
+
+/** 親となるボタンの設定 */
+.copy-btn {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    /* これがないと通知がどこかへ飛んでいきます */
+    display: inline-block;
+    border: 0;
+    margin: 0 0 15px 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.copy-btn::before {
+    content: "\f0c5";
+    font-size: 1.5em;
+
+}
+
+/** 通知の初期状態 */
+.copy-tooltip {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    width: 100px;
+    transform: translateX(-50%);
+    background-color: #333 !important;
+    /* 強制的に色を適用 */
+    color: #fff !important;
+    /* 強制的に色を適用 */
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+
+    /* 最初は隠す */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 9999;
+    /* 他の要素より手前に出す */
+}
+
+/** JSでクラスがついた時の状態 */
+.copy-tooltip.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-50%) translateY(-5px) !important;
+}
+
+/** プラグインアップデート表 */
+.update-icon_btn {
+    position: relative;
+    text-align: center;
+    margin: 50px 0;
+}
+
+.PLupdate-icon_table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+    /* テーブル全体のレイアウトを固定にし、均等に幅を割り当てる */
+    table-layout: fixed;
+}
+
+.PLupdate-icon_table tr:nth-child(2n+1) {
+    background: #e9faf9;
+}
+
+.PLupdate-icon_table th {
+    padding: 10px;
+    background: var(--color-main);
+    border: solid 1px var(--color-main);
+    color: var(--color-bace-text);
+}
+
+.PLupdate-icon_table td {
+    padding: 10px;
+    border: solid 1px var(--color-main);
+}
+
+.PLupdate-icon_table tr:last-child {
+    max-width: 1px;
+}
+
+/* ↓ アコーディオンボックス ↓ */
+.acbox {
+    width: auto;
+    font-size: 0px;
+    /* ラベルと開く部分を分離する時は数値を入れる */
+    margin: 10px 0 10px 0;
+    /* ボックス全体の位置調整 */
+}
+
+.acbox>label {
+    width: 100%;
+    max-width: 884px;
+    font-size: 16px;
+    /* ラベルの文字サイズ */
+    font-weight: bold;
+    text-align: center;
+    background: #f1f1f1;
+
+    /* ラベルの背景色 */
+    position: relative;
+    display: block;
+    padding: 8px;
+    border-radius: 4px;
+    /* ラベルの角の丸み */
+    cursor: pointer;
+    color: var(--color-main);
+    transition: 0.3s ease;
+}
+
+.acbox>label:hover {
+    background: var(--color-main);
+    color: #FFFFFF;
+    /* ラベルにマウスを乗せた時の背景色 */
+    transition: 0.3s ease;
+}
+
+.acbox input {
+    display: none;
+}
+
+.acbox>label:after {
+    color: var(--color-main);
+    content: "▼";
+    /* ラベルのアイコン */
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -14px;
+}
+
+.acbox>label:hover:after {
+    color: #FFFFFF;
+    content: "▼";
+    /* ラベルのアイコン */
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -14px;
+}
+
+.acbox>input:checked~label::after {
+    content: "▲";
+    /* ラベルをクリックした後のアイコン */
+    color: var(--color-text);
+}
+
+.acbox-under {
+    height: 0px;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.15s;
+    /* 開閉スピードの設定 */
+}
+
+.acbox input:checked~.acbox-under {
+    height: auto;
+    padding: 18px 10px;
+    /* 開いた部分の枠内の余白 */
+    border-radius: 0px;
+    /* 開いた部分の背景色 */
+    opacity: 1;
+}
+
+.acbox input:checked~label {
+    background: #ffffff;
+    /* クリック後のラベルの背景色 */
+    border: 1px solid var(--color-second);
+    color: var(--color-text);
+
+}
+
+.acbox-under {
+    font-size: 15px;
+    /* 開いた部分の文字サイズ */
+    color: var(--color-text);
+    /* 開いた部分の文字色 */
+    padding: 0.5em 1em;
+    border: solid 1px var(--color-second);
+    border-radius: 4px !important;
+}
+
+/* ↑ アコーディオンボックス ↑ */
+.step-list {
+    list-style: none;
+    padding: 0;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    border-bottom: solid 1px #333333;
+}
+
+.step-item:last-child {
+    border-bottom: solid 0px;
+}
+
+.step-number {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.step-text {
+    margin: 0;
+    line-height: 1.6;
+}

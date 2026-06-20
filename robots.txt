@@ -1,9 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /404.html
 
 # サイトマップのフルURLを記述して、クローラーを誘導する
-Sitemap: https:///sitemap.xml
+Sitemap: https://ochitehajimari-ochiteowaru.github.io/sitemap.xml
 
 # ChatGPT (OpenAI) の学習を拒否
 User-agent: GPTBot

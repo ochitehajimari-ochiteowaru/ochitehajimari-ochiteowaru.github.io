@@ -816,4 +816,22 @@ body.font-changed h2 {
     padding: 15px;
     max-height: 90vh;
   }
+
+  /* テーブルの縦並び対応 */
+  #info table,
+  #info table tr,
+  #info table th,
+  #info table tr td {
+    display: block;
+    width: 100%;
+  }
+
+  #info table th {
+    padding: 10px 0 4px 0;
+    white-space: normal;
+  }
+
+  #info table tr td {
+    padding-bottom: 20px;
+  }
 }

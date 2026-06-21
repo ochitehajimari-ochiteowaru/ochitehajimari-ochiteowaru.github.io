@@ -10,6 +10,10 @@
 }
 
 /* --- 基本スタイル --- */
+body {
+  touch-action: pan-y;
+}
+
 body,
 .btn,
 .close-btn {
@@ -28,6 +32,14 @@ body.font-changed,
 body.font-changed .btn,
 body.font-changed .close-btn {
   font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  /* ↓ iOS Safari特有の画像ドラッグと長押しメニューを無効化 ↓ */
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
 }
 
 /* --- ヘッダー（ヒーローエリア） --- */
@@ -322,7 +334,7 @@ body.font-changed h2 {
   box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 /* フォーム専用の調整 */
@@ -335,6 +347,8 @@ body.font-changed h2 {
   flex: 1;
   padding: 5px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 /* フォーム内iframeの設定 */
@@ -797,7 +811,7 @@ body.font-changed h2 {
     display: none;
   }
 
-  .modal-window {
+  .modal-content {
     width: 95%;
     padding: 15px;
     max-height: 90vh;

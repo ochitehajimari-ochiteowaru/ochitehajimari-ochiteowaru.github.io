@@ -3,7 +3,7 @@
 title: おちてはじまり、おちておわる。
 description: 『おちてはじまり、おちておわる。』公式サイト
 baseurl: ""
-url: "http://127.0.0.1:4000"
+url: "https://ochitehajimari-ochiteowaru.github.io/"
 include: [css, javascript, font, image]
 
 # Jekyllのビルド対象から除外する設定

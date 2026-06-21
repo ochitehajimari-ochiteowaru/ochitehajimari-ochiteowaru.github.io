@@ -1,0 +1,292 @@
+/* base.css */
+/* --- 外部リソース --- */
+@import url('https://use.fontawesome.com/releases/v7.2.0/css/all.css');
+
+/* --- 変数定義 --- */
+:root {
+    --color-main: #0c3b4b;
+    --color-second: #a5d4de;
+    --color-text: #333333;
+    --color-bace-text: #FFFFFF;
+    --color-accent: #757575;
+    --color-important: #D00;
+
+    --color-logo-twitter: #000000;
+    /* --color-logo-twitter: #1da1f3; */
+    --color-logo-youtube: #FF0000;
+    --color-logo-twitch: #9146FF;
+    --color-logo-discord: #5865F2;
+    --color-logo-amazon: #FF9900;
+    --color-logo-line: #00C300;
+    --color-logo-pdf: #EC1C24;
+    --color-logo-github: #181717;
+    --color-logo-pixiv: #0096fa;
+    --color-logo-qiita: ##55C500;
+
+    --trans-time: 0.3s;
+    --trans-ease: ease;
+}
+
+body {
+    margin: 0;
+    color: var(--color-text);
+    font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+    line-height: 1.8;
+}
+
+/* AwesomeFont */
+.AweSomeFont-Free {
+    font-family: "Font Awesome 7 Free";
+    font-weight: 900;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.AweSomeFont-Brands {
+    font-family: "Font Awesome 7 Brands";
+    font-weight: 400;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ロゴアイコン設定 */
+.download-icon::before {
+    content: "\f019";
+}
+
+.update-icon::before {
+    content: "\f021";
+}
+
+.steam-icon::before {
+    content: "\f1b6";
+}
+
+.x-icon::before {
+    content: "\e61b";
+}
+
+.win-icon::before {
+    content: "\f17a";
+}
+
+.mac-icon::before {
+    content: "\f179";
+}
+
+.github-icon::before {
+    content: "\f09b"
+}
+
+.youtube-icon::before {
+    content: "\f167"
+}
+
+.pixiv-icon::before {
+    content: "\e640"
+}
+
+/* ↓ aタグ ↓ */
+a {
+    text-decoration: none;
+    color: var(--color-bace-text);
+    text-decoration: underline;
+    transition: all var(--trans-time) var(--trans-ease);
+}
+
+.close-btn:hover::before,
+a:hover {
+    color: var(--color-accent);
+    transition: all var(--trans-time) var(--trans-ease);
+}
+
+/* ↑ aタグ ↑ */
+
+/* --- フッター・コピーライト --- */
+footer {
+    background-color: var(--color-main);
+    position: relative;
+}
+
+footer .footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 100px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ナビゲーションとSNSをまとめたコンテナ */
+.footer-nav-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+footer .logo {
+    display: block;
+}
+
+footer .logo img {
+    display: block;
+    width: 200px;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+}
+
+.footer-contents {
+    background: none;
+}
+
+/* フッターナビの区切り線 */
+footer .footer-nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer .footer-nav li {
+    padding: 0 20px;
+    /* 線の両側の余白 */
+    border-left: 1px solid var(--color-bace-text);
+    /* 白い縦線 */
+}
+
+/* 最初の項目だけ左側の線を消す */
+footer .footer-nav li:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+
+/* ナビゲーションリンク：下線を強制的に消す */
+footer .footer-nav a {
+    text-decoration: none;
+    color: var(--color-bace-text);
+    transition: all var(--trans-time) var(--trans-ease);
+}
+
+footer .footer-nav a:hover {
+    color: var(--color-accent);
+}
+
+/* SNSコンテナの設定 */
+footer .sns-container {
+    display: flex;
+    gap: 30px;
+    background: none;
+}
+
+/* 円の基本スタイル */
+.sns-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--color-bace-text);
+    text-decoration: none;
+    transition: all var(--trans-time) var(--trans-ease);
+    flex-shrink: 0;
+    /* 念のため余計な余白をカット */
+    overflow: hidden;
+    /* 軸を強制的に中央にする */
+    padding: 0;
+}
+
+/* アイコン（span）を厳密に中央配置 */
+.sns-circle span {
+    display: inline-flex;
+    /* ブロックとして扱う */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: var(--color-bace-text);
+    transition: all var(--trans-time) var(--trans-ease);
+    /* フォントの行高によるズレを無効化 */
+    line-height: 1;
+}
+
+.sns-circle span::before {
+    font-size: 1.2rem;
+}
+
+/* ホバー時のスタイル */
+.sns-circle:hover {
+    background-color: var(--color-bace-text);
+    border-color: transparent;
+    transition: all var(--trans-time) var(--trans-ease);
+}
+
+.sns-circle:hover span {
+    color: var(--color-text);
+}
+
+/* コピーライト */
+footer .copyright {
+    display: block;
+    background: #072630;
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+@media screen and (max-width: 1380px) {
+
+    /* フッターコンテナ全体を縦並びに */
+    footer .footer-container {
+        flex-direction: column;
+        padding: 30px 20px;
+        /* 要素間の縦間隔 */
+    }
+
+    /* ロゴを一番上に */
+    footer .logo {
+        order: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* ナビとSNSが入っているコンテナをその下に */
+    footer .footer-nav-container {
+        order: 2;
+        flex-direction: column;
+        /* 中身も縦並びに */
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    footer .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* 特定の要素の後で強制的に改行させるためのテクニック */
+    /* STORE と GUIDELINE の間に改行を入れたい場合 */
+    footer .footer-nav li:nth-child(3)::after {
+        content: "";
+        flex-basis: 100%;
+        /* これにより次の要素が必ず次の行に行く */
+    }
+
+    /* 改行した行の先頭にある縦線（PRIVACY POLICYの前の線）を消す */
+    footer .footer-nav li:nth-child(4) {
+        border-left: none;
+    }
+
+    footer .footer-nav li {
+        margin: 10px 0;
+    }
+}
+
+/* フッター */

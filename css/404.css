@@ -30,3 +30,9 @@
 .share {
   display: none;
 }
+
+.breadcrumb-nav li:last-child span:before {
+  /*404アイコン*/
+  content: '\e5c9';
+
+}

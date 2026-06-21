@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp');
 
+/* 全体のリセットとベース設定 */
 body,
 .btn {
     margin: 0;
@@ -20,7 +21,7 @@ footer {
     color: var(--color-bace-text);
 }
 
-/* ↓ aタグ ↓ */
+/* aタグ関連 */
 a {
     text-decoration: none;
     color: var(--color-text);
@@ -44,7 +45,6 @@ a {
     font-family: 'Material Icons Sharp';
     font-size: 10px;
     padding: 0 3px;
-    transition: 0.3s ease;
     vertical-align: middle;
 }
 
@@ -54,12 +54,14 @@ a {
 .a_nounder:hover,
 .a_nounder:hover::after {
     color: var(--color-accent);
-    transition: 0.3s ease;
 }
 
-/* ↑ aタグ ↑ */
-/* ↓ ヘッダー ↓ */
-header {
+/* ヘッダー */
+.header-name {
+    color: var(--color-bace-text);
+}
+
+.header-contents {
     display: flex;
     width: 100%;
     align-items: center;
@@ -67,39 +69,150 @@ header {
     background-color: var(--color-main);
     height: 65px;
     position: fixed;
-    z-index: 100;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    /* コンテンツより前面に */
     background-image: none;
 }
 
-header a {
-    color: var(--color-bace-text) !important;
+.metadata {
+    display: flex;
+    font-size: 13px;
+    align-items: center;
 }
 
-header a:hover {
-    color: var(--color-accent) !important;
+.breadcrumb-nav,
+.date {
+    flex: 1;
 }
+
+/* ↓ 年月日 ↓ */
+.metadata .date {
+    text-align: right;
+}
+
+.date time::before {
+    font-family: 'Material Icons Sharp';
+    display: inline-block;
+    color: var(--color-hover);
+    margin-right: 5px;
+    vertical-align: top;
+}
+
+.date .create-day::before {
+    content: "\e8b5";
+}
+
+.date .update-day {
+    margin-left: 10px;
+}
+
+.date .update-day::before {
+    content: "\e923";
+}
+
+/* ↑ 年月日 ↑ */
+
+/* ↓ パンくずリスト ↓ */
+.breadcrumb-nav {
+    position: relative;
+    overflow: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    z-index: 1;
+}
+
+.breadcrumb-nav ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.breadcrumb-nav li {
+    display: inline;
+    list-style: none;
+    font-weight: bold;
+}
+
+/* 矢印（区切り）の設定 */
+.breadcrumb-nav li:not(:last-child):after {
+    font-family: 'Material Icons Sharp';
+    content: '\e409';
+    /* ▶ */
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
+    padding: 0 0.2em;
+    color: var(--color-main);
+}
+
+.breadcrumb-nav li,
+.breadcrumb-nav li a {
+    color: var(--color-main);
+}
+
+.breadcrumb-nav li a:hover span {
+    text-decoration: underline;
+}
+
+.breadcrumb-nav li a:hover,
+.breadcrumb-nav li a:hover span,
+.breadcrumb-nav li a:hover:before {
+    color: var(--color-hover) !important;
+}
+
+/* アイコンの共通設定 */
+/* アイコンを a または span に付与したときの共通スタイル */
+.breadcrumb-nav li a:before,
+.breadcrumb-nav li span:before {
+    font-family: 'Material Icons Sharp';
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
+    color: var(--color-main);
+    margin-right: 3px;
+    vertical-align: bottom;
+}
+
+/* 各クラスのアイコン定義 */
+.pan-home:before {
+    content: '\e88a';
+}
+
+.pan-folder:before {
+    content: '\e2c7';
+}
+
+.pan-paper:before {
+    content: '\e24d';
+}
+
+.pan-404:before {
+    content: '\e5c9';
+}
+
+/* ↑ パンくずリスト ↑ */
+/* ↑ ヘッダー ↑ */
 
 .contents {
     display: flex;
     width: 100%;
     max-width: 900px;
     height: 100%;
-    /* コンテンツ全体を中央寄せ */
     align-items: center;
     justify-content: center;
 }
 
-/* タイトルのスタイル */
 .contents span a.a {
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
 }
 
-/* ↑ ヘッダー ↑ */
-
+/* コンテナとコンテンツ */
 .container {
     width: 100%;
+    padding-top: 65px;
+    /* ヘッダーの高さ分を確保 */
 }
 
 #content {
@@ -112,9 +225,8 @@ header a:hover {
     width: 100%;
     max-width: 900px;
     background-color: #FFFFFF;
-    margin-top: 65px;
-    padding: 0 30px;
-    padding-bottom: 20px;
+    padding: 30px;
+    /* 余白を整理 */
 }
 
 .container,
@@ -122,7 +234,7 @@ header a:hover {
     min-height: calc(100svh - 65px - 103px);
 }
 
-/* 見出しスタイル */
+/* --- 以下、見出し・リスト等の装飾（変更なし） --- */
 h1 {
     position: relative;
     text-align: center;
@@ -140,22 +252,18 @@ h1::before {
     background: var(--color-main);
 }
 
-h2.normal_tytle {
+h2.normal_title {
     position: relative;
     padding: 1rem 1rem;
-    margin: 30px 0 15px -20px;
-    /* リスト番号との兼ね合いで左マージンを調整 */
+    margin: 30px 0 15px 0;
     border-left: 5px solid var(--color-main);
     background: #f4f4f4;
     font-size: 1.25rem;
     display: block;
-    letter-spacing: 0;
 }
 
-/* リスト階層の設定 */
 .article {
     padding-left: 25px;
-    /* 親リストの番号が見えるように調整 */
     list-style-type: none;
 }
 
@@ -166,7 +274,6 @@ h2.normal_tytle {
     line-height: 2;
     font-size: 15px;
     color: var(--color-text);
-    overflow-wrap: break-word;
     margin-top: 10px;
 }
 
@@ -190,40 +297,51 @@ h2.normal_tytle {
     padding-left: 30px;
 }
 
-/* 附則のスタイル */
-.revision {
-    padding-left: 25px;
-    list-style-type: none;
-    /* 日付なので記号なしでも良い場合は none */
-}
-
-/* テーブルスタイル */
-.table-wrap {
-    overflow-x: auto;
-    margin: 20px 0;
-}
-
-.browser {
+.PLupdate-icon_table {
     width: 100%;
+    text-align: center;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
-.browser th,
-.browser td {
-    border: 1px solid #ccc;
+.PLupdate-icon_table th {
     padding: 10px;
-    font-size: 14px;
+    background: var(--color-main);
+    color: var(--color-bace-text);
+    border: solid 1px var(--color-main);
 }
 
-.browser th {
-    background: #eee;
+.PLupdate-icon_table td {
+    padding: 10px;
+    border: solid 1px var(--color-main);
 }
 
-.bold {
+/* アコーディオンとステップリストは元の定義を維持 */
+.acbox {
+    width: auto;
+    margin: 10px 0;
+}
+
+.acbox>label {
+    width: 100%;
+    max-width: 884px;
     font-weight: bold;
+    text-align: center;
+    background: #f1f1f1;
+    display: block;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--color-main);
 }
 
-/* ボタンの基本スタイル */
+.acbox-under {
+    font-size: 15px;
+    padding: 0.5em 1em;
+    border: solid 1px var(--color-second);
+    border-radius: 4px;
+}
+
+/* ↓ コピーBOX ↓ */
 .copy-box-container {
     border-top: 3px solid #aaa;
     border-bottom: 3px solid #aaa;
@@ -285,7 +403,54 @@ h2.normal_tytle {
     transform: translateX(-50%) translateY(-5px) !important;
 }
 
-/** プラグインアップデート表 */
+/* ↑ コピーBOX ↑ */
+
+/* ↓ ボタン ↓ */
+.btn-container {
+    display: block;
+    text-align: center;
+}
+
+.btn {
+    /* 幅を固定 */
+    min-width: 280px;
+    /* paddingが幅に含まれるようにする（重要：これがないと250pxより大きくなる） */
+    box-sizing: border-box;
+    /* インラインブロックとして扱い、中央寄せを有効にする */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: bold;
+    border: 2px solid var(--color-second);
+    transition: all var(--trans-time) var(--trans-ease);
+    box-shadow: 5px 5px 0px 0px var(--color-second);
+    background-color: #FFFFFF;
+    padding: 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.btn-download-icon {
+    font-size: 1rem;
+}
+
+.btn:hover {
+    box-shadow: 0 0 var(--color-second);
+    color: var(--color-bace-text);
+    background-color: var(--color-second);
+}
+
+.btn span::before {
+    margin-right: 15px;
+}
+
+/* ↑ ボタン ↑ */
+
+
+/* ↓ プラグインアップデート表 ↓ */
 .update-icon_btn {
     position: relative;
     text-align: center;
@@ -320,6 +485,8 @@ h2.normal_tytle {
 .PLupdate-icon_table tr:last-child {
     max-width: 1px;
 }
+
+/* ↑ プラグインアップデート表 ↑ */
 
 /* ↓ アコーディオンボックス ↓ */
 .acbox {
@@ -422,34 +589,94 @@ h2.normal_tytle {
     border-radius: 4px !important;
 }
 
-/* ↑ アコーディオンボックス ↑ */
-.step-list {
-    list-style: none;
+/* ↑ アコーディオンBOX ↑ */
+
+/* ↓ ニュース一覧 ↓ */
+.news-list {
+    list-style: none outside;
+    margin: 0;
     padding: 0;
 }
 
-.step-item {
+.news-list .item a {
     display: flex;
-    align-items: flex-start;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    border-bottom: solid 1px #333333;
+    flex-wrap: nowrap;
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-accent);
+    padding: 20px;
+    align-items: center;
 }
 
-.step-item:last-child {
-    border-bottom: solid 0px;
+.news-list .item:first-child a {
+    border-top: 1px solid var(--color-accent);
 }
 
-.step-number {
-    background-color: #333;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 4px;
-    margin-right: 15px;
-    font-weight: bold;
-}
-
-.step-text {
+.news-list .item .date {
     margin: 0;
-    line-height: 1.6;
+    min-width: 80px;
+    font-size: 16px;
+    color: var(--color-hover);
+    padding: 0 20px 0 0;
+}
+
+.news-list .item .category {
+    margin: 0;
+    min-width: 100px;
+    padding: 0 20px 0 0;
+}
+
+.news-list .item .category span {
+    color: var(--color-bace-text);
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    padding: 5px 0;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.news-list .item .title {
+    margin: 0;
+    width: 100%;
+}
+
+/* カテゴリ別カラー分岐 */
+.news-list .item .category .important {
+    background: var(--color-important);
+}
+
+/* 重要は赤 */
+.news-list .item .category .news {
+    background: var(--color-main);
+}
+
+/* 通常はメインカラー */
+/* ↑ ニュース一覧 ↑ */
+
+@media screen and (max-width: 767px) {
+
+    /* ↓ 日付 ↓ */
+    .metadata {
+        flex-direction: column;
+        align-items: unset;
+        gap: 10px;
+    }
+
+    /* ↑ 日付 ↑ */
+    /* ↓ ニュース一覧 ↓ */
+    .news-list .item a {
+        flex-wrap: wrap;
+    }
+
+    .news-list .item .date {
+        min-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .news-list .item .category {
+        min-width: 50%;
+        margin-bottom: 10px;
+    }
+
+    /* ↑ ニュース一覧 ↑ */
 }

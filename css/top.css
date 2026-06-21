@@ -1,30 +1,6 @@
 /* --- 外部リソース --- */
 @import url('https://use.fontawesome.com/releases/v7.2.0/css/all.css');
 
-/* --- 変数定義 --- */
-:root {
-  --color-main: #0c3b4b;
-  --color-second: #a5d4de;
-  --color-text: #333333;
-  --color-bace-text: #FFFFFF;
-  --color-accent: #757575;
-
-  --color-logo-twitter: #000000;
-  /* --color-logo-twitter: #1da1f3; */
-  --color-logo-youtube: #FF0000;
-  --color-logo-twitch: #9146FF;
-  --color-logo-discord: #5865F2;
-  --color-logo-amazon: #FF9900;
-  --color-logo-line: #00C300;
-  --color-logo-pdf: #EC1C24;
-  --color-logo-github: #181717;
-  --color-logo-pixiv: #0096fa;
-  --color-logo-qiita: ##55C500;
-
-  --trans-time: 0.3s;
-  --trans-ease: ease;
-}
-
 /* --- フォント定義 --- */
 @font-face {
   font-family: 'JF-DOT-SHINONOMEMIN14';
@@ -32,79 +8,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
-/* AwesomeFont */
-.AweSomeFont-Free {
-  font-family: "Font Awesome 7 Free";
-  font-weight: 900;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-}
-
-.AweSomeFont-Brands {
-  font-family: "Font Awesome 7 Brands";
-  font-weight: 400;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ロゴアイコン設定 */
-.download-icon::before {
-  content: "\f019";
-}
-
-.update-icon::before {
-  content: "\f021";
-}
-
-.steam-icon::before {
-  content: "\f1b6";
-}
-
-.x-icon::before {
-  content: "\e61b";
-}
-
-.win-icon::before {
-  content: "\f17a";
-}
-
-.mac-icon::before {
-  content: "\f179";
-}
-
-.github-icon::before {
-  content: "\f09b"
-}
-
-.youtube-icon::before {
-  content: "\f167"
-}
-
-.pixiv-icon::before {
-  content: "\e640"
-}
-
-
-/* ↓ aタグ ↓ */
-a {
-  text-decoration: none;
-  color: var(--color-bace-text);
-  text-decoration: underline;
-  transition: all var(--trans-time) var(--trans-ease);
-}
-
-.close-btn:hover::before,
-.a:hover {
-  color: var(--color-accent);
-  transition: all var(--trans-time) var(--trans-ease);
-}
-
-/* ↑ aタグ ↑ */
 
 /* --- 基本スタイル --- */
 body,
@@ -162,6 +65,11 @@ h1.glitch img {
   font-weight: bold;
 }
 
+.top_a:hover {
+  color: var(--color-second);
+  transition: all 0.3s ease;
+}
+
 /* --- ナビゲーション（PC版） --- */
 .global-nav {
   position: -webkit-sticky;
@@ -205,11 +113,6 @@ h1.glitch img {
   font-size: 0.9rem;
   letter-spacing: 0.2em;
   transition: color 0.3s;
-}
-
-.menu-content a:hover {
-  color: var(--color-accent);
-  transition: all 0.3s ease;
 }
 
 /* フォント切り替えボタンを包むコンテナ */
@@ -392,96 +295,58 @@ body.font-changed h2 {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  /* 背景を暗くする */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 3000;
-  /* ナビゲーションよりも上に表示 */
   opacity: 0;
   pointer-events: none;
-  /* 非表示の時はクリックをスルーさせる */
   transition: opacity 0.3s ease;
 }
 
-/* ウィンドウが開いている状態（JSでクラスを付与する） */
+/* ウィンドウが開いている状態 */
 .modal-overlay.is-active {
   opacity: 1;
   pointer-events: auto;
-  flex: 3;
 }
 
-.phone-contact {
-  display: none;
-}
-
-/* ウィンドウ本体 */
-.modal-window,
-.GoogleForm {
+/* 共通ウィンドウスタイル */
+.modal-content {
   background-color: var(--color-main);
   border: 2px solid var(--color-second);
-  /* 横幅を広げる（画面の90%まで許容） */
   width: 90%;
-  /* 最大幅を大きく設定（500pxから850pxへ） */
   max-width: 850px;
-  /* 高さを画面の80%までに制限 */
-
-  border-radius: 8px;
   max-height: 80vh;
   padding: 30px;
+  border-radius: 8px;
   box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.5);
-  transform: translateY(20px);
-  transition: transform 0.3s ease;
-
-  /* 中身が溢れた場合にウィンドウ内でスクロールさせる */
-  overflow-y: auto;
-  /* レイアウトの崩れを防ぐ */
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
-/* ウィンドウ内のボディ部分（余白調整） */
+/* フォーム専用の調整 */
+.modal-content.is-form {
+  max-width: 640px;
+}
+
+/* ウィンドウ内のボディ部分 */
 .modal-body {
   flex: 1;
-  padding-right: 10px;
-  /* スクロールバーとの重なり防止 */
-  padding: 20px 5px;
-  max-height: 70vh;
+  padding: 5px;
   overflow-y: auto;
-  /* 内容が多い場合はスクロール可能にする */
 }
 
-/* フォーム本体（iframe）の設定 */
+/* フォーム内iframeの設定 */
 .modal-body iframe {
-  /* 横幅は親要素（GoogleFormの枠）に合わせる */
   width: 100%;
-  /* 高さを画面の高さ（vh）を基準に指定する（例：画面の70%） */
   height: 70vh;
-  /* 枠線を消す */
   border: none;
-  /* 下に余計な隙間ができないようにする */
   display: block;
   background-color: #FFFFFF;
-  border-radius: 8px;
 }
 
-/* GoogleFormを包む白い枠（親要素）の設定 */
-.GoogleForm {
-  /* 画面の横幅90%まで広げる */
-  max-width: 640px;
-  /* 画面の高さに合わせる */
-  max-height: 100vh;
-  /* flexコンテナとして中身を配置 */
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-google-body {
-  padding: 0;
-  max-height: 100vh;
-}
-
-/* ウィンドウ内の装飾 */
+/* ヘッダーの設定 */
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -496,12 +361,13 @@ body.font-changed h2 {
   font-size: 1.2rem;
 }
 
+/* 閉じるボタン */
 .close-btn {
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--color-bace-text)
+  color: var(--color-bace-text);
 }
 
 .close-btn::before {
@@ -509,13 +375,14 @@ body.font-changed h2 {
 }
 
 /* スタッフ情報の各セクション */
-.team-member-content {
+.team-member-content,
+.news-content {
   margin-bottom: 15px;
-  padding-bottom: 10px;
   border: 1.5px solid var(--color-second);
   padding: 20px;
 }
 
+/* 役職 */
 .post {
   margin: 0;
   display: block;
@@ -523,17 +390,35 @@ body.font-changed h2 {
   font-size: 0.9rem;
 }
 
+/* 役割詳細 */
 .role {
   font-size: 0.8rem;
   margin: 3px 0 5px 0;
 }
 
+/* 名前 */
 .mem-name {
   font-size: 1.8rem;
   font-weight: bold;
   border-top: 1px dotted var(--color-second);
   padding-top: 25px;
-  margin: 0;
+  margin: 15px 0 10px 0;
+}
+
+/* リンクエリア */
+.link {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.link a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 /* リンク全体のコンテナ */
@@ -637,140 +522,113 @@ body.font-changed h2 {
   transform: translateY(0);
 }
 
-/* --- フッター・コピーライト --- */
-footer {
-  background-color: var(--color-main);
-  position: relative;
-}
-
-footer .footer-container {
+/* ニュースモーダル */
+/* ニュース項目全体のスタイル */
+.news-item {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 30px 100px;
-  position: relative;
-  z-index: 2;
+  gap: 15px;
+  padding: 10px 0;
+  border-bottom: 1px dotted var(--color-second);
 }
 
-/* ナビゲーションとSNSをまとめたコンテナ */
-.footer-nav-container {
-  display: flex;
-  align-items: center;
-  gap: 40px;
+/* 最後の項目はボーダーを消す（オプション） */
+.news-item:last-child {
+  border-bottom: none;
 }
 
-footer .logo {
-  display: block;
+/* 日付 */
+.news-date {
+  margin: 0;
+  font-family: monospace;
+  /* 等幅フォントで日付を揃える */
+  font-weight: bold;
+  color: var(--color-second);
+  white-space: nowrap;
 }
 
-footer .logo img {
-  display: block;
-  width: 200px;
-  aspect-ratio: 4 / 3;
-  object-fit: contain;
+/* タイトル */
+.news-title {
+  margin: 0;
 }
 
-.footer-contents {
-  background: none;
-}
-
-/* フッターナビの区切り線 */
-footer .footer-nav {
-  display: flex;
-  list-style: none;
+/* ↓ ニュース一覧（TOPページ用） ↓ */
+.news-list {
+  list-style: none outside;
   margin: 0;
   padding: 0;
 }
 
-footer .footer-nav li {
-  padding: 0 20px;
-  /* 線の両側の余白 */
-  border-left: 1px solid var(--color-bace-text);
-  /* 白い縦線 */
-}
-
-/* 最初の項目だけ左側の線を消す */
-footer .footer-nav li:first-child {
-  border-left: none;
-  padding-left: 0;
-}
-
-/* ナビゲーションリンク：下線を強制的に消す */
-footer .footer-nav a {
-  text-decoration: none;
-  color: var(--color-bace-text);
-  transition: all var(--trans-time) var(--trans-ease);
-}
-
-footer .footer-nav a:hover {
-  color: var(--color-accent);
-}
-
-/* SNSコンテナの設定 */
-footer .sns-container {
+.news-list .item a {
   display: flex;
-  gap: 30px;
-  background: none;
-}
-
-/* 円の基本スタイル */
-.sns-circle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 2px solid var(--color-bace-text);
+  flex-direction: column;
+  text-align: left;
   text-decoration: none;
-  transition: all var(--trans-time) var(--trans-ease);
-  flex-shrink: 0;
-  /* 念のため余計な余白をカット */
-  overflow: hidden;
-  /* 軸を強制的に中央にする */
-  padding: 0;
+  border-bottom: 1px solid var(--color-second);
+  padding: 20px;
+  gap: 5px;
 }
 
-/* アイコン（span）を厳密に中央配置 */
-.sns-circle span {
-  display: inline-flex;
-  /* ブロックとして扱う */
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+.news-list .item:first-child a {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.news-list .item .date {
+  margin: 0;
+  min-width: 80px;
+  font-size: 16px;
+}
+
+.news-list .item .category {
+  margin-bottom: 4px;
+}
+
+.news-list .item .category span {
   color: var(--color-bace-text);
-  transition: all var(--trans-time) var(--trans-ease);
-  /* フォントの行高によるズレを無効化 */
+  text-align: center;
+  display: inline-block;
+  width: 100px;
+  padding: 5px 0;
+  font-size: 12px;
   line-height: 1;
 }
 
-.sns-circle span::before {
-  font-size: 1.2rem;
+.news-list .item .title {
+  margin: 0;
+  width: 100%;
 }
 
-/* ホバー時のスタイル */
-.sns-circle:hover {
-  background-color: var(--color-bace-text);
-  border-color: transparent;
-  transition: all var(--trans-time) var(--trans-ease);
+/* カテゴリ別カラー分岐 */
+.news-list .item .category .important {
+  background: var(--color-important);
 }
 
-.sns-circle:hover span {
+/* 重要は赤 */
+.news-list .item .category .news {
+  background: var(--color-second);
   color: var(--color-text);
 }
 
-/* コピーライト */
-footer .copyright {
+/* ↑ ニュース一覧 ↑ */
+
+/* ↓ 記事詳細ページ用（create-day/update-day） ↓ */
+.create-day,
+.update-day {
   display: block;
-  background: #072630;
-  text-align: center;
-  padding: 15px;
-  font-size: 12px;
-  line-height: 1.8;
+  font-size: 14px;
+  color: var(--color-second);
+  margin-bottom: 5px;
 }
 
-/* フッター */
+.update-day::before {
+  content: "最終更新: ";
+}
+
+.create-day::before {
+  content: "公開日: ";
+}
+
+/* ↑ 記事詳細ページ用 ↑ */
 
 /* --- スマートフォン対応 --- */
 @media screen and (max-width: 768px) {
@@ -943,56 +801,5 @@ footer .copyright {
     width: 95%;
     padding: 15px;
     max-height: 90vh;
-  }
-}
-
-/* フッター */
-@media screen and (max-width: 1380px) {
-
-  /* フッターコンテナ全体を縦並びに */
-  footer .footer-container {
-    flex-direction: column;
-    padding: 30px 20px;
-    /* 要素間の縦間隔 */
-  }
-
-  /* ロゴを一番上に */
-  footer .logo {
-    order: 1;
-    display: flex;
-    justify-content: center;
-  }
-
-  /* ナビとSNSが入っているコンテナをその下に */
-  footer .footer-nav-container {
-    order: 2;
-    flex-direction: column;
-    /* 中身も縦並びに */
-    align-items: center;
-    margin-top: 40px;
-  }
-
-  footer .footer-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-  }
-
-  /* 特定の要素の後で強制的に改行させるためのテクニック */
-  /* STORE と GUIDELINE の間に改行を入れたい場合 */
-  footer .footer-nav li:nth-child(3)::after {
-    content: "";
-    flex-basis: 100%;
-    /* これにより次の要素が必ず次の行に行く */
-  }
-
-  /* 改行した行の先頭にある縦線（PRIVACY POLICYの前の線）を消す */
-  footer .footer-nav li:nth-child(4) {
-    border-left: none;
-  }
-
-  footer .footer-nav li {
-    margin: 10px 0;
   }
 }

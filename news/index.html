@@ -1,0 +1,32 @@
+---
+layout: default
+title: お知らせ一覧
+page-title: NEWS
+create-date: 2026-06-20
+update-date: 2026-06-20
+breadcrumbs:
+- { name: "ホーム", url: "/", icon: "home" }
+- { name: "お知らせ一覧", url: null, icon: "folder" }
+---
+
+<div class="entry-content">
+  <ul class="news-list">
+    {% for post in site.posts %}
+    <li class="item">
+      <a href="{{ post.url | relative_url }}">
+        <time class="date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
+          {{ post.date | date: "%Y.%m.%d" }}
+        </time>
+
+        {% if post.categories contains '重要' %}
+        <span class="category"><span class="important">重　要</span></span>
+        {% else %}
+        <span class="category"><span class="news">ニュース</span></span>
+        {% endif %}
+
+        <span class="title">{{ post.title }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

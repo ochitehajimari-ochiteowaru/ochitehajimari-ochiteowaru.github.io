@@ -114,56 +114,107 @@ docElement.addEventListener('click', (e) => {
 // ============================================
 // モーダルウィンドウ
 // ============================================
-/** チーム紹介ボタン */
-const TEAM_openBtn = document.getElementById('open-window-btn');
-/** フォームボタン */
-const Form_openBtn = document.getElementById('open-form-btn');
-/** チーム紹介閉じるボタン */
-const TEAM_closeBtn = document.getElementById('close-window-btn');
-/** フォーム閉じるボタン */
-const form_closeBtn = document.getElementById('close-form-btn');
-/** チーム紹介モーダル */
-const TEAM_modal = document.getElementById('TEAM_modal-overlay');
-/** フォームモーダル */
-const Form_modal = document.getElementById('GoogleForm_modal-overlay');
+/** チーム紹介の開くボタン */
+const teamOpenBtn = document.getElementById('open-window-btn');
+/** フォームの開くボタン */
+const formOpenBtn = document.getElementById('open-form-btn');
+/** ニュースの開くボタン */
+const newsOpenBtn = document.getElementById('open-news-btn');
+/** チーム紹介の閉じるボタン */
+const teamCloseBtn = document.getElementById('close-window-btn');
+/** フォームの閉じるボタン */
+const formCloseBtn = document.getElementById('close-form-btn');
+/** ニュースの閉じるボタン */
+const newsCloseBtn = document.getElementById('close-news-btn');
+/** チーム紹介のモーダル要素 */
+const teamModal = document.getElementById('TEAM_modal-overlay');
+/** ニュースのモーダル要素 */
+const newsModal = document.getElementById('news_modal-overlay');
+/** フォームのモーダル要素 */
+const formModal = document.getElementById('GoogleForm_modal-overlay');
 
-// 各ボタンとモーダルが存在する場合のみイベントを設定する
-if (TEAM_openBtn && TEAM_modal) {
-  TEAM_openBtn.addEventListener('click', () => {
-    TEAM_modal.classList.add('is-active');
+// チーム紹介のモーダルを開く処理
+if (teamOpenBtn && teamModal) {
+  // ボタンクリック時にモーダルを表示しスクロールを固定する
+  teamOpenBtn.addEventListener('click', () => {
+    teamModal.classList.add('is-active');
     document.body.style.overflow = 'hidden';
   });
 }
-if (Form_openBtn && Form_modal) {
-  Form_openBtn.addEventListener('click', () => {
-    Form_modal.classList.add('is-active');
+
+// フォームのモーダルを開く処理
+if (formOpenBtn && formModal) {
+  // ボタンクリック時にモーダルを表示しスクロールを固定する
+  formOpenBtn.addEventListener('click', () => {
+    formModal.classList.add('is-active');
     document.body.style.overflow = 'hidden';
   });
 }
-if (TEAM_closeBtn && TEAM_modal) {
-  TEAM_closeBtn.addEventListener('click', () => {
-    TEAM_modal.classList.remove('is-active');
+
+// ニュースのモーダルを開く処理
+if (newsOpenBtn && newsModal) {
+  // ボタンクリック時にモーダルを表示しスクロールを固定する
+  newsOpenBtn.addEventListener('click', () => {
+    newsModal.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+  });
+}
+
+// チーム紹介のモーダルを閉じる処理
+if (teamCloseBtn && teamModal) {
+  // ボタンクリック時にモーダルを非表示にしスクロールを解除する
+  teamCloseBtn.addEventListener('click', () => {
+    teamModal.classList.remove('is-active');
     document.body.style.overflow = 'auto';
   });
 }
-if (form_closeBtn && Form_modal) {
-  form_closeBtn.addEventListener('click', () => {
-    Form_modal.classList.remove('is-active');
+
+// フォームのモーダルを閉じる処理
+if (formCloseBtn && formModal) {
+  // ボタンクリック時にモーダルを非表示にしスクロールを解除する
+  formCloseBtn.addEventListener('click', () => {
+    formModal.classList.remove('is-active');
     document.body.style.overflow = 'auto';
   });
 }
-if (TEAM_modal) {
-  TEAM_modal.addEventListener('click', (e) => {
-    if (e.target === TEAM_modal) {
-      TEAM_modal.classList.remove('is-active');
+
+// ニュースのモーダルを閉じる処理
+if (newsCloseBtn && newsModal) {
+  // ボタンクリック時にモーダルを非表示にしスクロールを解除する
+  newsCloseBtn.addEventListener('click', () => {
+    newsModal.classList.remove('is-active');
+    document.body.style.overflow = 'auto';
+  });
+}
+
+// チーム紹介の背景クリック時の処理
+if (teamModal) {
+  // 背景部分がクリックされた場合にモーダルを閉じる
+  teamModal.addEventListener('click', (e) => {
+    if (e.target === teamModal) {
+      teamModal.classList.remove('is-active');
       document.body.style.overflow = 'auto';
     }
   });
 }
-if (Form_modal) {
-  Form_modal.addEventListener('click', (e) => {
-    if (e.target === Form_modal) {
-      Form_modal.classList.remove('is-active');
+
+// フォームの背景クリック時の処理
+if (formModal) {
+  // 背景部分がクリックされた場合にモーダルを閉じる
+  formModal.addEventListener('click', (e) => {
+    if (e.target === formModal) {
+      formModal.classList.remove('is-active');
+      document.body.style.overflow = 'auto';
+    }
+  });
+}
+
+// ニュースの背景クリック時の処理
+if (newsModal) {
+  // 背景部分がクリックされた場合にモーダルを閉じる
+  newsModal.addEventListener('click', (e) => {
+    if (e.target === newsModal) {
+      newsModal.classList.remove('is-active');
       document.body.style.overflow = 'auto';
     }
   });

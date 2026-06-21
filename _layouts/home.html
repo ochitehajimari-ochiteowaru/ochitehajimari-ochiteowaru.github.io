@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    {% include head.html %}
+
+    <link rel="stylesheet" href="{{ '/css/base.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/top.css' | relative_url }}">
+
+    {% if page.css_path %}
+    {% for path in page.css_path %}
+    <link rel="stylesheet" href="{{ path | relative_url }}">
+    {% endfor %}
+    {% endif %}
+</head>
+
+<body>
+    {{ content }}
+    {% include footer.html %}
+    <script src="{{ '/javascript/common.js' | relative_url }}"></script>
+    <script src="https://instant.page/5.2.0" type="module"></script>
+</body>
+
+</html>

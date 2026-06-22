@@ -10,7 +10,6 @@
     --color-bace-text: #FFFFFF;
     --color-accent: #757575;
     --color-important: #D00;
-
     --color-logo-twitter: #000000;
     /* --color-logo-twitter: #1da1f3; */
     --color-logo-youtube: #FF0000;
@@ -27,11 +26,24 @@
     --trans-ease: ease;
 }
 
+html {
+    font-size: 1rem;
+}
+
 body {
     margin: 0;
     color: var(--color-text);
     font-family: 'Roboto', 'Noto Sans JP', sans-serif;
     line-height: 1.8;
+    touch-action: pan-y;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1rem;
 }
 
 /* AwesomeFont */
@@ -116,7 +128,7 @@ footer .footer-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 100px;
+    padding: 1.875rem 6.25rem;
     position: relative;
     z-index: 2;
 }
@@ -125,7 +137,7 @@ footer .footer-container {
 .footer-nav-container {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 2.5rem;
 }
 
 footer .logo {
@@ -134,7 +146,7 @@ footer .logo {
 
 footer .logo img {
     display: block;
-    width: 200px;
+    width: 12.5rem;
     aspect-ratio: 4 / 3;
     object-fit: contain;
 }
@@ -152,9 +164,9 @@ footer .footer-nav {
 }
 
 footer .footer-nav li {
-    padding: 0 20px;
+    padding: 0 1.25rem;
     /* 線の両側の余白 */
-    border-left: 1px solid var(--color-bace-text);
+    border-left: 0.0625rem solid var(--color-bace-text);
     /* 白い縦線 */
 }
 
@@ -178,7 +190,7 @@ footer .footer-nav a:hover {
 /* SNSコンテナの設定 */
 footer .sns-container {
     display: flex;
-    gap: 30px;
+    gap: 1.875rem;
     background: none;
 }
 
@@ -187,10 +199,10 @@ footer .sns-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 3.125rem;
+    height: 3.125rem;
     border-radius: 50%;
-    border: 2px solid var(--color-bace-text);
+    border: 0.125rem solid var(--color-bace-text);
     text-decoration: none;
     transition: all var(--trans-time) var(--trans-ease);
     flex-shrink: 0;
@@ -234,17 +246,17 @@ footer .copyright {
     display: block;
     background: #072630;
     text-align: center;
-    padding: 15px;
-    font-size: 12px;
+    padding: 0.9375rem;
+    font-size: 0.75rem;
     line-height: 1.8;
 }
 
-@media screen and (max-width: 1380px) {
+@media screen and (max-width: 86.25rem) {
 
     /* フッターコンテナ全体を縦並びに */
     footer .footer-container {
         flex-direction: column;
-        padding: 30px 20px;
+        padding: 1.875rem 1.25rem;
         /* 要素間の縦間隔 */
     }
 
@@ -261,7 +273,7 @@ footer .copyright {
         flex-direction: column;
         /* 中身も縦並びに */
         align-items: center;
-        margin-top: 40px;
+        margin-top: 2.5rem;
     }
 
     footer .footer-nav {
@@ -285,8 +297,16 @@ footer .copyright {
     }
 
     footer .footer-nav li {
-        margin: 10px 0;
+        margin: 0.625rem 0;
     }
 }
 
-/* フッター */
+@media screen and (max-width: 48rem) {
+
+    body,
+    button {
+        line-height: 1.5;
+        /* この数値を大きくすればスマホの文字全体が大きくなります */
+        font-size: 0.9375rem;
+    }
+}

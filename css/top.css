@@ -174,7 +174,7 @@ body.font-changed #change-font-btn {
 
 .font-change-icon::before {
   content: "\f031";
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 /* --- メインコンテンツ --- */
@@ -590,7 +590,7 @@ body.font-changed h2 {
 .news-list .item .date {
   margin: 0;
   min-width: 80px;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .news-list .item .category {
@@ -603,7 +603,7 @@ body.font-changed h2 {
   display: inline-block;
   width: 100px;
   padding: 5px 0;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1;
 }
 
@@ -629,7 +629,7 @@ body.font-changed h2 {
 .create-day,
 .update-day {
   display: block;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--color-second);
   margin-bottom: 5px;
 }
@@ -650,7 +650,7 @@ body.font-changed h2 {
   body,
   button {
     line-height: 1.5;
-    font-size: 15px;
+    font-size: 0.875rem;
   }
 
   h1.glitch img {
@@ -664,6 +664,7 @@ body.font-changed h2 {
 
 
   h2 {
+    font-size: 1.5rem;
     letter-spacing: 0.2em;
   }
 
@@ -815,6 +816,14 @@ body.font-changed h2 {
     width: 95%;
     padding: 15px;
     max-height: 90vh;
+  }
+
+  .modal-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .mem-name {
+    font-size: 1.4rem;
   }
 
   /* テーブルの縦並び対応 */

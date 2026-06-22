@@ -14,7 +14,7 @@ body,
 }
 
 .btn {
-    padding: 15px;
+    padding: 0.9375rem;
 }
 
 footer {
@@ -43,8 +43,8 @@ a {
     content: "\e89e";
     color: var(--color-text);
     font-family: 'Material Icons Sharp';
-    font-size: 10px;
-    padding: 0 3px;
+    font-size: 0.625rem;
+    padding: 0 0.1875rem;
     vertical-align: middle;
 }
 
@@ -67,18 +67,17 @@ a {
     align-items: center;
     justify-content: center;
     background-color: var(--color-main);
-    height: 65px;
+    height: 4.0625rem;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
-    /* コンテンツより前面に */
     background-image: none;
 }
 
 .metadata {
     display: flex;
-    font-size: 13px;
+    font-size: 0.8125rem;
     align-items: center;
 }
 
@@ -96,7 +95,7 @@ a {
     font-family: 'Material Icons Sharp';
     display: inline-block;
     color: var(--color-hover);
-    margin-right: 5px;
+    margin-right: 0.3125rem;
     vertical-align: top;
 }
 
@@ -105,7 +104,7 @@ a {
 }
 
 .date .update-day {
-    margin-left: 10px;
+    margin-left: 0.625rem;
 }
 
 .date .update-day::before {
@@ -139,8 +138,7 @@ a {
 .breadcrumb-nav li:not(:last-child):after {
     font-family: 'Material Icons Sharp';
     content: '\e409';
-    /* ▶ */
-    font-size: 13px;
+    font-size: 0.8125rem;
     -webkit-font-smoothing: antialiased;
     padding: 0 0.2em;
     color: var(--color-main);
@@ -162,14 +160,13 @@ a {
 }
 
 /* アイコンの共通設定 */
-/* アイコンを a または span に付与したときの共通スタイル */
 .breadcrumb-nav li a:before,
 .breadcrumb-nav li span:before {
     font-family: 'Material Icons Sharp';
-    font-size: 13px;
+    font-size: 0.8125rem;
     -webkit-font-smoothing: antialiased;
     color: var(--color-main);
-    margin-right: 3px;
+    margin-right: 0.1875rem;
     vertical-align: bottom;
 }
 
@@ -190,13 +187,10 @@ a {
     content: '\e5c9';
 }
 
-/* ↑ パンくずリスト ↑ */
-/* ↑ ヘッダー ↑ */
-
 .contents {
     display: flex;
     width: 100%;
-    max-width: 900px;
+    max-width: 56.25rem;
     height: 100%;
     align-items: center;
     justify-content: center;
@@ -205,14 +199,13 @@ a {
 .contents span a.a {
     text-decoration: none;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 /* コンテナとコンテンツ */
 .container {
     width: 100%;
-    padding-top: 65px;
-    /* ヘッダーの高さ分を確保 */
+    padding-top: 4.0625rem;
 }
 
 #content {
@@ -223,47 +216,45 @@ a {
 
 #child1 {
     width: 100%;
-    max-width: 900px;
+    max-width: 56.25rem;
     background-color: #FFFFFF;
-    padding: 30px;
-    /* 余白を整理 */
+    padding: 1.875rem;
 }
 
 .container,
 #child1 {
-    min-height: calc(100svh - 65px - 103px);
+    min-height: calc(100svh - 4.0625rem - 6.4375rem);
 }
 
-/* --- 以下、見出し・リスト等の装飾（変更なし） --- */
 h1 {
     position: relative;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 3.125rem;
 }
 
 h1::before {
     position: absolute;
-    bottom: -10px;
-    left: calc(50% - 30px);
-    width: 60px;
-    height: 5px;
+    bottom: -0.625rem;
+    left: calc(50% - 1.875rem);
+    width: 3.75rem;
+    height: 0.3125rem;
     content: '';
-    border-radius: 3px;
+    border-radius: 0.1875rem;
     background: var(--color-main);
 }
 
 h2.normal_title {
     position: relative;
-    padding: 1rem 1rem;
-    margin: 30px 0 15px 0;
-    border-left: 5px solid var(--color-main);
+    padding: 1rem;
+    margin: 1.875rem 0 0.9375rem 0;
+    border-left: 0.3125rem solid var(--color-main);
     background: #f4f4f4;
     font-size: 1.25rem;
     display: block;
 }
 
 .article {
-    padding-left: 25px;
+    padding-left: 1.5625rem;
     list-style-type: none;
 }
 
@@ -272,29 +263,29 @@ h2.normal_title {
 .third,
 .fourth {
     line-height: 2;
-    font-size: 15px;
+    font-size: 1rem;
     color: var(--color-text);
-    margin-top: 10px;
+    margin-top: 0.625rem;
 }
 
 .first {
     list-style-type: upper-roman;
-    padding-left: 30px;
+    padding-left: 1.875rem;
 }
 
 .second {
     list-style-type: upper-alpha;
-    padding-left: 30px;
+    padding-left: 1.875rem;
 }
 
 .third {
     list-style-type: lower-alpha;
-    padding-left: 30px;
+    padding-left: 1.875rem;
 }
 
 .fourth {
     list-style-type: lower-roman;
-    padding-left: 30px;
+    padding-left: 1.875rem;
 }
 
 .PLupdate-icon_table {
@@ -305,64 +296,61 @@ h2.normal_title {
 }
 
 .PLupdate-icon_table th {
-    padding: 10px;
+    padding: 0.625rem;
     background: var(--color-main);
     color: var(--color-bace-text);
-    border: solid 1px var(--color-main);
+    border: solid 0.0625rem var(--color-main);
 }
 
 .PLupdate-icon_table td {
-    padding: 10px;
-    border: solid 1px var(--color-main);
+    padding: 0.625rem;
+    border: solid 0.0625rem var(--color-main);
 }
 
-/* アコーディオンとステップリストは元の定義を維持 */
 .acbox {
     width: auto;
-    margin: 10px 0;
+    margin: 0.625rem 0;
 }
 
 .acbox>label {
     width: 100%;
-    max-width: 884px;
+    max-width: 55.25rem;
     font-weight: bold;
     text-align: center;
     background: #f1f1f1;
     display: block;
-    padding: 8px;
+    padding: 0.5rem;
     cursor: pointer;
     color: var(--color-main);
 }
 
 .acbox-under {
-    font-size: 15px;
+    font-size: 0.9375rem;
     padding: 0.5em 1em;
-    border: solid 1px var(--color-second);
-    border-radius: 4px;
+    border: solid 0.0625rem var(--color-second);
+    border-radius: 0.25rem;
 }
 
-/* ↓ コピーBOX ↓ */
+/* コピーBOX */
 .copy-box-container {
-    border-top: 3px solid #aaa;
-    border-bottom: 3px solid #aaa;
+    border-top: 0.1875rem solid #aaa;
+    border-bottom: 0.1875rem solid #aaa;
     background-color: #eee;
     padding: 1em 2em;
-    margin: 20px 0;
+    margin: 1.25rem 0;
 }
 
 .copy-box-container p {
     margin: 0;
 }
 
-/** 親となるボタンの設定 */
 .copy-btn {
-    width: 50px;
-    height: 50px;
+    width: 3.125rem;
+    height: 3.125rem;
     position: relative;
-    /* これがないと通知がどこかへ飛んでいきます */
     display: inline-block;
     border: 0;
-    margin: 0 0 15px 0;
+    margin: 0 0 0.9375rem 0;
     padding: 0;
     cursor: pointer;
 }
@@ -370,53 +358,40 @@ h2.normal_title {
 .copy-btn::before {
     content: "\f0c5";
     font-size: 1.5em;
-
 }
 
-/** 通知の初期状態 */
 .copy-tooltip {
     position: absolute;
-    top: -15px;
+    top: -0.9375rem;
     left: 50%;
-    width: 100px;
+    width: 6.25rem;
     transform: translateX(-50%);
     background-color: #333 !important;
-    /* 強制的に色を適用 */
     color: #fff !important;
-    /* 強制的に色を適用 */
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-
-    /* 最初は隠す */
+    padding: 0.3125rem 0.625rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
     opacity: 0 !important;
     visibility: hidden !important;
     transition: opacity 0.3s, transform 0.3s;
     z-index: 9999;
-    /* 他の要素より手前に出す */
 }
 
-/** JSでクラスがついた時の状態 */
 .copy-tooltip.show {
     opacity: 1 !important;
     visibility: visible !important;
-    transform: translateX(-50%) translateY(-5px) !important;
+    transform: translateX(-50%) translateY(-0.3125rem) !important;
 }
 
-/* ↑ コピーBOX ↑ */
-
-/* ↓ ボタン ↓ */
+/* ボタン */
 .btn-container {
     display: block;
     text-align: center;
 }
 
 .btn {
-    /* 幅を固定 */
-    min-width: 280px;
-    /* paddingが幅に含まれるようにする（重要：これがないと250pxより大きくなる） */
+    min-width: 17.5rem;
     box-sizing: border-box;
-    /* インラインブロックとして扱い、中央寄せを有効にする */
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -424,12 +399,12 @@ h2.normal_title {
     text-decoration: none;
     color: var(--color-text);
     font-weight: bold;
-    border: 2px solid var(--color-second);
+    border: 0.125rem solid var(--color-second);
     transition: all var(--trans-time) var(--trans-ease);
-    box-shadow: 5px 5px 0px 0px var(--color-second);
+    box-shadow: 0.3125rem 0.3125rem 0px 0px var(--color-second);
     background-color: #FFFFFF;
-    padding: 20px;
-    margin: 10px;
+    padding: 1.25rem;
+    margin: 0.625rem;
     cursor: pointer;
 }
 
@@ -444,7 +419,7 @@ h2.normal_title {
 }
 
 .btn span::before {
-    margin-right: 15px;
+    margin-right: 0.9375rem;
 }
 
 /* ↑ ボタン ↑ */
@@ -590,8 +565,7 @@ h2.normal_title {
 }
 
 /* ↑ アコーディオンBOX ↑ */
-
-/* ↓ ニュース一覧 ↓ */
+/* ニュース一覧 */
 .news-list {
     list-style: none outside;
     margin: 0;
@@ -602,27 +576,27 @@ h2.normal_title {
     display: flex;
     flex-wrap: nowrap;
     text-decoration: none;
-    border-bottom: 1px solid var(--color-accent);
-    padding: 20px;
+    border-bottom: 0.0625rem solid var(--color-accent);
+    padding: 1.25rem;
     align-items: center;
 }
 
 .news-list .item:first-child a {
-    border-top: 1px solid var(--color-accent);
+    border-top: 0.0625rem solid var(--color-accent);
 }
 
 .news-list .item .date {
     margin: 0;
-    min-width: 80px;
-    font-size: 16px;
+    min-width: 5rem;
+    font-size: 1rem;
     color: var(--color-hover);
-    padding: 0 20px 0 0;
+    padding: 0 1.25rem 0 0;
 }
 
 .news-list .item .category {
     margin: 0;
-    min-width: 100px;
-    padding: 0 20px 0 0;
+    min-width: 6.25rem;
+    padding: 0 1.25rem 0 0;
 }
 
 .news-list .item .category span {
@@ -630,8 +604,8 @@ h2.normal_title {
     text-align: center;
     display: inline-block;
     width: 100%;
-    padding: 5px 0;
-    font-size: 12px;
+    padding: 0.3125rem 0;
+    font-size: 0.75rem;
     line-height: 1;
 }
 
@@ -653,30 +627,28 @@ h2.normal_title {
 /* 通常はメインカラー */
 /* ↑ ニュース一覧 ↑ */
 
-@media screen and (max-width: 767px) {
 
-    /* ↓ 日付 ↓ */
+/* ↓ 日付 ↓ */
+
+@media screen and (max-width: 47.9375rem) {
+
     .metadata {
         flex-direction: column;
         align-items: unset;
-        gap: 10px;
+        gap: 0.625rem;
     }
 
-    /* ↑ 日付 ↑ */
-    /* ↓ ニュース一覧 ↓ */
     .news-list .item a {
         flex-wrap: wrap;
     }
 
     .news-list .item .date {
         min-width: 100%;
-        margin-bottom: 10px;
+        margin-bottom: 0.625rem;
     }
 
     .news-list .item .category {
         min-width: 50%;
-        margin-bottom: 10px;
+        margin-bottom: 0.625rem;
     }
-
-    /* ↑ ニュース一覧 ↑ */
 }

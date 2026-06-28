@@ -335,9 +335,11 @@ body.font-changed h2 {
   box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
+  min-height: 0;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
 }
+
 
 /* フォーム専用の調整 */
 .modal-content.is-form {
@@ -347,8 +349,10 @@ body.font-changed h2 {
 /* ウィンドウ内のボディ部分 */
 .modal-body {
   flex: 1;
+  min-height: 0;
   padding: 5px;
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   touch-action: auto;
 }
@@ -797,6 +801,23 @@ body.font-changed h2 {
     padding: 20px;
   }
 
+  .modal-content {
+    max-height: 50vh;
+    padding: 20px;
+  }
+
+  .person p {
+    font-size: 0.8rem;
+  }
+
+  .role {
+    font-size: 0.5rem;
+  }
+
+  .mem-name {
+    font-size: 1.6rem !important;
+  }
+
   .btn {
     /* スマホ時の幅を固定 */
     width: 150px;
@@ -811,12 +832,6 @@ body.font-changed h2 {
 
   .pc-contact {
     display: none;
-  }
-
-  .modal-content {
-    width: 95%;
-    padding: 15px;
-    max-height: 90vh;
   }
 
   /* テーブルの縦並び対応 */

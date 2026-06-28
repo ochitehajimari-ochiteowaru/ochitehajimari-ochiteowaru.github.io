@@ -327,7 +327,8 @@ body.font-changed h2 {
   background-color: var(--color-main);
   border: 2px solid var(--color-second);
   width: 90%;
-  max-width: 850px;
+  height: 100%;
+  max-width: 80vw;
   max-height: 80vh;
   padding: 30px;
   border-radius: 8px;
@@ -335,6 +336,7 @@ body.font-changed h2 {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* フォーム専用の調整 */
@@ -346,10 +348,7 @@ body.font-changed h2 {
 .modal-body {
   flex: 1;
   padding: 5px;
-  height: 80vh;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  -webkit-overflow-scrolling: touch;
 }
 
 /* フォーム内iframeの設定 */

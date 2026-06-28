@@ -1,4 +1,4 @@
-/* --- 外部リソース --- */
+﻿/* --- 外部リソース --- */
 @import url('https://use.fontawesome.com/releases/v7.2.0/css/all.css');
 
 /* --- フォント定義 --- */
@@ -10,27 +10,41 @@
 }
 
 /* --- 基本スタイル --- */
+html,
 body {
-  touch-action: pan-y;
-}
-
-body,
-.btn,
-.close-btn {
+  min-height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  touch-action: auto;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
   background-color: var(--color-main);
   color: var(--color-bace-text);
   font-family: 'JF-DOT-SHINONOMEMIN14', 'Roboto', 'Noto Sans JP', sans-serif;
   line-height: 1.8;
-  overflow-x: hidden;
   font-size: 1rem;
   letter-spacing: 0.1em;
 }
 
-body.font-changed,
-body.font-changed .btn,
-body.font-changed .close-btn {
+
+.btn,
+.close-btn {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  color: inherit;
+}
+
+body.font-changed {
   font-family: 'Roboto', 'Noto Sans JP', sans-serif;
 }
 
@@ -42,9 +56,21 @@ img {
   -webkit-touch-callout: none;
 }
 
+a,
+button,
+.btn,
+.close-btn,
+input,
+textarea,
+select,
+iframe {
+  touch-action: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* --- ヘッダー（ヒーローエリア） --- */
 header {
-  height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -179,14 +205,14 @@ body.font-changed #change-font-btn {
 
 /* --- メインコンテンツ --- */
 section {
-  padding: 100px 25%;
+  padding: 100px min(25%, 220px);
   margin-bottom: 20px;
-  /* 画像を中央（上下左右真ん中）に配置する */
+  box-sizing: border-box;
   background-position: center;
-  /* 画像を隙間なくセクション全体に敷き詰める */
   background-size: cover;
-  /* 画像が繰り返されないようにする */
   background-repeat: no-repeat;
+  position: relative;
+  overflow: visible;
 }
 
 h2 {
@@ -302,22 +328,23 @@ body.font-changed h2 {
 /* ウィンドウの背景となる暗い幕 */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
+  display: none;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding: 20px 0;
   z-index: 3000;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
-/* ウィンドウが開いている状態 */
 .modal-overlay.is-active {
+  display: flex;
   opacity: 1;
   pointer-events: auto;
 }
@@ -326,8 +353,7 @@ body.font-changed h2 {
 .modal-content {
   background-color: var(--color-main);
   border: 2px solid var(--color-second);
-  width: 90%;
-  height: 100%;
+  width: min(90%, 80vw);
   max-width: 80vw;
   max-height: 80vh;
   padding: 30px;
@@ -335,11 +361,11 @@ body.font-changed h2 {
   box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
+  position: relative;
+  margin: auto;
   min-height: 0;
   overflow: hidden;
-  -webkit-overflow-scrolling: touch;
 }
-
 
 /* フォーム専用の調整 */
 .modal-content.is-form {
@@ -348,13 +374,22 @@ body.font-changed h2 {
 
 /* ウィンドウ内のボディ部分 */
 .modal-body {
-  flex: 1;
+  flex: 1 1 auto;
   min-height: 0;
   padding: 5px;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   touch-action: auto;
+  overscroll-behavior: contain;
+}
+
+html.modal-open,
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+  overscroll-behavior: none;
+  touch-action: none;
 }
 
 /* フォーム内iframeの設定 */
@@ -653,6 +688,21 @@ body.font-changed h2 {
 /* --- スマートフォン対応 --- */
 @media screen and (max-width: 768px) {
 
+  /* ルートスクロールを优先 */
+  html {
+    overflow-x: hidden !important;
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: auto !important;
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    touch-action: auto !important;
+  }
+
   body,
   button {
     line-height: 1.5;
@@ -738,29 +788,46 @@ body.font-changed h2 {
 
   /* メニュー本体のスマホ設定 */
   .global-nav {
+    display: flex;
     position: fixed;
     top: 0;
-    left: 100%;
+    right: 0;
     width: 100%;
     height: 100vh;
-    /* 画面の高さ一杯に */
     background: var(--color-main);
     z-index: 1100;
-    display: flex;
     justify-content: center;
-    /* 縦方向中央 */
     align-items: center;
-    /* 横方向中央 */
-    transition: all 0.5s ease;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border: none;
     padding: 0;
     flex-direction: column;
-    /* 中身を縦並びに */
+    transform: translateX(100%);
   }
 
   /* チェックが入ったら画面内にスライドイン */
   #menu-btn-check:checked~.global-nav {
-    left: 0;
+    transform: translateX(0);
+  }
+
+  /* ハンバーガーメニューが開いているときはスクロール禁止 */
+  html:has(#menu-btn-check:checked),
+  body:has(#menu-btn-check:checked) {
+    overflow: hidden !important;
+  }
+
+  /* モーダルのスクロール制限をリセット */
+  html.modal-open,
+  body.modal-open {
+    overflow: visible !important;
+    height: auto !important;
+    touch-action: auto !important;
+  }
+
+  /* モバイルでのヘッダー調整 */
+  header {
+    min-height: auto;
+    height: 100vh;
   }
 
   .menu-content {
@@ -798,11 +865,11 @@ body.font-changed h2 {
   }
 
   section {
-    padding: 20px;
+    padding: 24px 20px;
   }
 
   .modal-content {
-    max-height: 50vh;
+    max-height: 70vh;
     padding: 20px;
   }
 

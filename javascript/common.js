@@ -25,6 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
   /** ページ内の各セクションのリスト */
   const sections = document.querySelectorAll("section");
 
+  const getScrollTop = () => window.pageYOffset;
+
+  const setScrollTop = (value) => window.scrollTo(0, value);
+
   // メニューのリンクをクリックした時にメニューを閉じる処理
   menuLinks.forEach((link) => {
     link.addEventListener("click", () => {
@@ -37,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // スクロールに応じて要素を表示させる処理
   const showSections = () => {
     /** 現在のスクロール位置 */
-    const scrollPos = window.scrollY;
+    const scrollPos = getScrollTop();
     sections.forEach((section) => {
       /** セクションの上端の位置 */
       const sectionTop = section.offsetTop;
@@ -47,8 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   };
+
   showSections();
-  window.addEventListener("scroll", showSections);
+  window.addEventListener("scroll", showSections, { passive: true });
 });
 
 // ============================================
@@ -138,89 +143,96 @@ const newsModal = document.getElementById("news_modal-overlay");
 /** フォームのモーダル要素 */
 const formModal = document.getElementById("GoogleForm_modal-overlay");
 
+const toggleScrollLock = (shouldLock) => {
+  document.documentElement.classList.toggle("modal-open", shouldLock);
+  document.body.classList.toggle("modal-open", shouldLock);
+  document.body.style.overflow = shouldLock ? "hidden" : "";
+  document.documentElement.style.overflow = shouldLock ? "hidden" : "";
+};
+
+const openModal = (modal) => {
+  if (!modal) return;
+  modal.classList.add("is-active");
+  toggleScrollLock(true);
+};
+
+const closeModal = (modal) => {
+  if (!modal) return;
+  modal.classList.remove("is-active");
+  if (!document.querySelector(".modal-overlay.is-active")) {
+    toggleScrollLock(false);
+  }
+};
+
+// モーダル表示中は背景のスクロールを止め、モーダル本体のスクロールだけを残す
+if (typeof window !== "undefined") {
+  document.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!document.body.classList.contains("modal-open")) return;
+      const insideModal = e.target instanceof Element && e.target.closest(".modal-content");
+      const insideModalBody = e.target instanceof Element && e.target.closest(".modal-body");
+      if (!insideModalBody && insideModal) {
+        e.preventDefault();
+      }
+    },
+    { passive: false },
+  );
+}
+
 // チーム紹介のモーダルを開く処理
 if (teamOpenBtn && teamModal) {
-  // ボタンクリック時にモーダルを表示しスクロールを固定する
-  teamOpenBtn.addEventListener("click", () => {
-    teamModal.classList.add("is-active");
-    document.body.style.overflow = "hidden";
-  });
+  teamOpenBtn.addEventListener("click", () => openModal(teamModal));
 }
 
 // フォームのモーダルを開く処理
 if (formOpenBtn && formModal) {
-  // ボタンクリック時にモーダルを表示しスクロールを固定する
-  formOpenBtn.addEventListener("click", () => {
-    formModal.classList.add("is-active");
-    document.body.style.overflow = "hidden";
-  });
+  formOpenBtn.addEventListener("click", () => openModal(formModal));
 }
 
 // ニュースのモーダルを開く処理
 if (newsOpenBtn && newsModal) {
-  // ボタンクリック時にモーダルを表示しスクロールを固定する
-  newsOpenBtn.addEventListener("click", () => {
-    newsModal.classList.add("is-active");
-    document.body.style.overflow = "hidden";
-  });
+  newsOpenBtn.addEventListener("click", () => openModal(newsModal));
 }
 
 // チーム紹介のモーダルを閉じる処理
 if (teamCloseBtn && teamModal) {
-  // ボタンクリック時にモーダルを非表示にしスクロールを解除する
-  teamCloseBtn.addEventListener("click", () => {
-    teamModal.classList.remove("is-active");
-    document.body.style.overflow = "auto";
-  });
+  teamCloseBtn.addEventListener("click", () => closeModal(teamModal));
 }
 
 // フォームのモーダルを閉じる処理
 if (formCloseBtn && formModal) {
-  // ボタンクリック時にモーダルを非表示にしスクロールを解除する
-  formCloseBtn.addEventListener("click", () => {
-    formModal.classList.remove("is-active");
-    document.body.style.overflow = "auto";
-  });
+  formCloseBtn.addEventListener("click", () => closeModal(formModal));
 }
 
 // ニュースのモーダルを閉じる処理
 if (newsCloseBtn && newsModal) {
-  // ボタンクリック時にモーダルを非表示にしスクロールを解除する
-  newsCloseBtn.addEventListener("click", () => {
-    newsModal.classList.remove("is-active");
-    document.body.style.overflow = "auto";
-  });
+  newsCloseBtn.addEventListener("click", () => closeModal(newsModal));
 }
 
 // チーム紹介の背景クリック時の処理
 if (teamModal) {
-  // 背景部分がクリックされた場合にモーダルを閉じる
   teamModal.addEventListener("click", (e) => {
     if (e.target === teamModal) {
-      teamModal.classList.remove("is-active");
-      document.body.style.overflow = "auto";
+      closeModal(teamModal);
     }
   });
 }
 
 // フォームの背景クリック時の処理
 if (formModal) {
-  // 背景部分がクリックされた場合にモーダルを閉じる
   formModal.addEventListener("click", (e) => {
     if (e.target === formModal) {
-      formModal.classList.remove("is-active");
-      document.body.style.overflow = "auto";
+      closeModal(formModal);
     }
   });
 }
 
 // ニュースの背景クリック時の処理
 if (newsModal) {
-  // 背景部分がクリックされた場合にモーダルを閉じる
   newsModal.addEventListener("click", (e) => {
     if (e.target === newsModal) {
-      newsModal.classList.remove("is-active");
-      document.body.style.overflow = "auto";
+      closeModal(newsModal);
     }
   });
 }

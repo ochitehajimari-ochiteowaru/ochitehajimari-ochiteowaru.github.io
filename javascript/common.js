@@ -1,10 +1,15 @@
-/** 現在の実行環境におけるフル西暦 */
+/**
+ * 現在の実行環境におけるフル西暦
+ *
+ * @format
+ */
+
 const currentYear = new Date().getFullYear();
 
 // 実行時の年が、あらかじめ設定した開始年よりも進んでいるかを確認する
 if (currentYear > 2026) {
   /** 画面上の年を表示させたい要素 */
-  const displayTargetElement = document.getElementById('copyright-year');
+  const displayTargetElement = document.getElementById("copyright-year");
   // 指定した要素が存在する場合のみ、表示内容を更新する
   if (displayTargetElement) {
     displayTargetElement.textContent = " - " + currentYear;
@@ -12,17 +17,17 @@ if (currentYear > 2026) {
 }
 
 /** ページの読み込み完了を待機するイベント */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   /** スマホ用メニューの開閉を制御するチェックボックス */
-  const menuCheck = document.querySelector('#menu-btn-check');
+  const menuCheck = document.querySelector("#menu-btn-check");
   /** ナビゲーション内の各リンクのリスト */
-  const menuLinks = document.querySelectorAll('.menu-content a');
+  const menuLinks = document.querySelectorAll(".menu-content a");
   /** ページ内の各セクションのリスト */
-  const sections = document.querySelectorAll('section');
+  const sections = document.querySelectorAll("section");
 
   // メニューのリンクをクリックした時にメニューを閉じる処理
-  menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
       if (menuCheck) {
         menuCheck.checked = false;
       }
@@ -33,212 +38,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const showSections = () => {
     /** 現在のスクロール位置 */
     const scrollPos = window.scrollY;
-    sections.forEach(section => {
-      /** セクションの上端の位置 */
-      const sectionTop = section.offsetTop;
-      if (scrollPos > sectionTop - 600) {
-        section.style.opacity = '1';
-        section.style.transform = 'translateY(0)';
+    sections.forEach((section) => {
+      /** 各セクションのトップ位置からブラウザ上部までの距離 */
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      // スクロール位置がセクションのトップを超えたら表示させる
+      if (scrollPos > sectionTop - window.innerHeight * 0.8) {
+        section.classList.add("is-active");
       }
     });
   };
+
+  // スクロールイベントを監視する
+  window.addEventListener("scroll", showSections);
   showSections();
-  window.addEventListener('scroll', showSections);
-});
 
-// ============================================
-// スクロール
-// ============================================
-/** 画面全体を管理する対象 */
-const docElement = document;
-
-docElement.addEventListener('click', (e) => {
-  /** クリックされた要素から最も近いリンク */
-  const anchorLink = e.target.closest('a');
-  if (anchorLink && anchorLink.hash && anchorLink.hash.startsWith('#')) {
-    /** 移動先のID名 */
-    const idName = anchorLink.hash;
-    /** 移動先の要素本体 */
-    const targetSection = docElement.querySelector(idName);
-    if (targetSection) {
-      e.preventDefault();
-      /** スクロール開始時の位置 */
-      const startPos = window.pageYOffset;
-      /** 目的地の位置 */
-      const endPos = targetSection.getBoundingClientRect().top + startPos;
-      /** アニメーション時間 */
-      const duration = 600;
-      /** 開始時刻 */
-      let startTime = null;
-
-      /**
-       * イージング関数
-       * @param {number} t 現在の経過時間
-       * @param {number} b 開始位置
-       * @param {number} c 移動距離
-       * @param {number} d 合計時間
-       */
-      const easeOutQuad = (t, b, c, d) => {
-        t /= d;
-        return -c * t * (t - 2) + b;
-      };
-
-      /**
-       * 描画ループ
-       * @param {number} currentTime 現在時刻
-       */
-      const loop = (currentTime) => {
-        if (startTime === null) startTime = currentTime;
-        /** 経過時間 */
-        const timeElapsed = currentTime - startTime;
-        /** 次の位置 */
-        const nextPos = easeOutQuad(timeElapsed, startPos, endPos - startPos, duration);
-        window.scrollTo(0, nextPos);
-        if (timeElapsed < duration) {
-          window.requestAnimationFrame(loop);
-        } else {
-          window.scrollTo(0, endPos);
-        }
-      };
-      window.requestAnimationFrame(loop);
-
-      /** メニューの開閉スイッチ */
-      const menuToggle = docElement.getElementById('menu-btn-check');
-      if (menuToggle && menuToggle.checked) {
-        menuToggle.checked = false;
-      }
-    }
-  }
-});
-
-// ============================================
-// モーダルウィンドウ
-// ============================================
-/** チーム紹介の開くボタン */
-const teamOpenBtn = document.getElementById('open-window-btn');
-/** フォームの開くボタン */
-const formOpenBtn = document.getElementById('open-form-btn');
-/** ニュースの開くボタン */
-const newsOpenBtn = document.getElementById('open-news-btn');
-/** チーム紹介の閉じるボタン */
-const teamCloseBtn = document.getElementById('close-window-btn');
-/** フォームの閉じるボタン */
-const formCloseBtn = document.getElementById('close-form-btn');
-/** ニュースの閉じるボタン */
-const newsCloseBtn = document.getElementById('close-news-btn');
-/** チーム紹介のモーダル要素 */
-const teamModal = document.getElementById('TEAM_modal-overlay');
-/** ニュースのモーダル要素 */
-const newsModal = document.getElementById('news_modal-overlay');
-/** フォームのモーダル要素 */
-const formModal = document.getElementById('GoogleForm_modal-overlay');
-
-// チーム紹介のモーダルを開く処理
-if (teamOpenBtn && teamModal) {
-  // ボタンクリック時にモーダルを表示しスクロールを固定する
-  teamOpenBtn.addEventListener('click', () => {
-    teamModal.classList.add('is-active');
-    document.body.style.overflow = 'hidden';
-  });
-}
-
-// フォームのモーダルを開く処理
-if (formOpenBtn && formModal) {
-  // ボタンクリック時にモーダルを表示しスクロールを固定する
-  formOpenBtn.addEventListener('click', () => {
-    formModal.classList.add('is-active');
-    document.body.style.overflow = 'hidden';
-  });
-}
-
-// ニュースのモーダルを開く処理
-if (newsOpenBtn && newsModal) {
-  // ボタンクリック時にモーダルを表示しスクロールを固定する
-  newsOpenBtn.addEventListener('click', () => {
-    newsModal.classList.add('is-active');
-    document.body.style.overflow = 'hidden';
-  });
-}
-
-// チーム紹介のモーダルを閉じる処理
-if (teamCloseBtn && teamModal) {
-  // ボタンクリック時にモーダルを非表示にしスクロールを解除する
-  teamCloseBtn.addEventListener('click', () => {
-    teamModal.classList.remove('is-active');
-    document.body.style.overflow = 'auto';
-  });
-}
-
-// フォームのモーダルを閉じる処理
-if (formCloseBtn && formModal) {
-  // ボタンクリック時にモーダルを非表示にしスクロールを解除する
-  formCloseBtn.addEventListener('click', () => {
-    formModal.classList.remove('is-active');
-    document.body.style.overflow = 'auto';
-  });
-}
-
-// ニュースのモーダルを閉じる処理
-if (newsCloseBtn && newsModal) {
-  // ボタンクリック時にモーダルを非表示にしスクロールを解除する
-  newsCloseBtn.addEventListener('click', () => {
-    newsModal.classList.remove('is-active');
-    document.body.style.overflow = 'auto';
-  });
-}
-
-// チーム紹介の背景クリック時の処理
-if (teamModal) {
-  // 背景部分がクリックされた場合にモーダルを閉じる
-  teamModal.addEventListener('click', (e) => {
-    if (e.target === teamModal) {
-      teamModal.classList.remove('is-active');
-      document.body.style.overflow = 'auto';
-    }
-  });
-}
-
-// フォームの背景クリック時の処理
-if (formModal) {
-  // 背景部分がクリックされた場合にモーダルを閉じる
-  formModal.addEventListener('click', (e) => {
-    if (e.target === formModal) {
-      formModal.classList.remove('is-active');
-      document.body.style.overflow = 'auto';
-    }
-  });
-}
-
-// ニュースの背景クリック時の処理
-if (newsModal) {
-  // 背景部分がクリックされた場合にモーダルを閉じる
-  newsModal.addEventListener('click', (e) => {
-    if (e.target === newsModal) {
-      newsModal.classList.remove('is-active');
-      document.body.style.overflow = 'auto';
-    }
-  });
-}
-
-// ============================================
-// フォント変更
-// ============================================
-/** フォント切り替えボタン */
-const fontChangeButton = document.getElementById('change-font-btn');
-if (fontChangeButton) {
-  fontChangeButton.addEventListener('click', () => {
-    document.body.classList.toggle('font-changed');
-  });
-}
-
-// ============================================
-// カーソル変更（ルートディレクトリのみ）
-// ============================================
-window.addEventListener('DOMContentLoaded', () => {
+  // 特定のパスでのみ実行されるカーソル変更処理
   /** 現在のURLパス */
   const currentPath = window.location.pathname;
-  // ルートまたはindex.htmlの場合のみ実行
-  if (currentPath === '/' || currentPath.endsWith('index.html')) {
+  if (currentPath === "/" || currentPath.endsWith("index.html")) {
     /** カーソル画像パス */
     const cursorImagePath = "./image/cursor.png";
     /** カーソルのスタイル設定値 */
@@ -249,39 +66,35 @@ window.addEventListener('DOMContentLoaded', () => {
       bodyElement.style.cursor = cursorStyleValue;
     }
     /** インタラクティブ要素のリスト */
-    const interactiveElements = document.querySelectorAll('button, a, .btn');
+    const interactiveElements = document.querySelectorAll("button, a, .btn");
     interactiveElements.forEach((targetElement) => {
       targetElement.style.cursor = cursorStyleValue;
     });
   }
 });
 
-// ============================================
+// ===========================================
 // コピー処理（通知機能付き）
-// ============================================
+// ===========================================
 /** コピーを実行するためのボタン要素 */
-const copyButton = document.getElementById('copy-target-btn');
+const copyButton = document.getElementById("copy-target-btn");
 /** コピー完了を通知する吹き出し要素 */
-const tooltipElement = document.getElementById('copy-tooltip');
+const tooltipElement = document.getElementById("copy-tooltip");
 
 // ボタンと通知要素がHTML内に存在する場合のみ実行する
 if (copyButton && tooltipElement) {
-  copyButton.addEventListener('click', () => {
+  copyButton.addEventListener("click", () => {
     /** ボタンのdata属性から取得したコピー対象の文字列 */
-    const textToCopy = copyButton.getAttribute('data-copy');
+    const textToCopy = copyButton.getAttribute("data-copy");
 
     // クリップボードに文字を書き込む処理を実行
     navigator.clipboard.writeText(textToCopy).then(() => {
       // 成功時に「show」クラスを追加して通知を表示する
-      tooltipElement.classList.add('show');
-
-      // 1.5秒後に表示を消すためのタイマーを設定
+      tooltipElement.classList.add("show");
+      // 2秒後に通知を隠す
       setTimeout(() => {
-        tooltipElement.classList.remove('show');
-      }, 1500);
-    }).catch(err => {
-      // 失敗時のログ出力
-      console.error('コピーに失敗しました', err);
+        tooltipElement.classList.remove("show");
+      }, 2000);
     });
   });
 }

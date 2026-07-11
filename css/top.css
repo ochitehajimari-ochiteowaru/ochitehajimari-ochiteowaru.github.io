@@ -16,8 +16,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-x: clip;
   -webkit-overflow-scrolling: touch;
   touch-action: auto;
 }
@@ -387,7 +386,6 @@ body.font-changed h2 {
 html.modal-open,
 body.modal-open {
   overflow: hidden;
-  height: 100vh;
   overscroll-behavior: none;
   touch-action: none;
 }
@@ -690,15 +688,16 @@ body.modal-open {
 
   /* ルートスクロールを优先 */
   html {
-    overflow-x: hidden !important;
-    overflow-y: scroll !important;
+    /* overflow-x: hidden を clip に変更し、overflow-y: scroll を削除 */
+    overflow-x: clip !important;
     -webkit-overflow-scrolling: touch !important;
     touch-action: auto !important;
     scroll-behavior: auto !important;
   }
 
   body {
-    overflow-x: hidden !important;
+    /* overflow-x: hidden を clip に変更 */
+    overflow-x: clip !important;
     overflow-y: visible !important;
     touch-action: auto !important;
   }

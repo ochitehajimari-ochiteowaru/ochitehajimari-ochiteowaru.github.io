@@ -285,7 +285,7 @@ body.font-changed h2 {
 }
 
 #story {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url("../image/index/story.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../image/index/story.jpg");
 }
 
 #characters {
@@ -294,6 +294,19 @@ body.font-changed h2 {
 
 #info {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../image/index/info.jpg");
+}
+
+#store {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/store.jpg");
+}
+
+#account {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/account.jpg");
+}
+
+#contact {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/contact.jpg");
+  margin-bottom: 0;
 }
 
 #info table {
@@ -316,19 +329,6 @@ body.font-changed h2 {
   /* 内容を左寄せ・上寄せ */
   text-align: left;
   vertical-align: top;
-}
-
-#store {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/store.jpg");
-}
-
-#account {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/account.jpg");
-}
-
-#contact {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/contact.jpg");
-  margin-bottom: 0;
 }
 
 /* ウィンドウの背景となる暗い幕 */

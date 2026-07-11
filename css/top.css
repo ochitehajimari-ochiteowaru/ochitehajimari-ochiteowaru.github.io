@@ -204,7 +204,7 @@ body.font-changed #change-font-btn {
 
 /* --- メインコンテンツ --- */
 section {
-  padding: 100px min(25%, 220px);
+  padding: 100px min(25%, 1500px);
   margin-bottom: 20px;
   box-sizing: border-box;
   background-position: center;

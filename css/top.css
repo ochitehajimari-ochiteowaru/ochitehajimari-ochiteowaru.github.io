@@ -214,6 +214,13 @@ section {
   overflow: visible;
 }
 
+.shadow,
+table tr th,
+table tr td {
+  text-shadow: 0 0 6px rgb(0, 0, 0, 1);
+}
+
+
 h2 {
   font-size: 2rem;
   margin: 0 0 50px 0;

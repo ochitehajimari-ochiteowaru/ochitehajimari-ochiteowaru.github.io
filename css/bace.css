@@ -71,6 +71,10 @@ p {
     -webkit-font-smoothing: antialiased;
 }
 
+.inline-icon {
+    margin-right: 10px;
+}
+
 /* ロゴアイコン設定 */
 .download-icon::before {
     content: "\f019";

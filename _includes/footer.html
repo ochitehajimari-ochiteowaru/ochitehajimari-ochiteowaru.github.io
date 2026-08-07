@@ -1,13 +1,16 @@
 <footer>
   <div class="footer-container">
-    <a class="logo" href="{{ site.baseurl}}/">
-      <img src="{{ site.baseurl}}/image/index/logo.png">
+    <a class="logo" href="{{ site.baseurl}}/" aria-label="トップページへ">
+      <picture>
+        <source srcset="{{ site.baseurl }}/image/index/logo.webp" type="image/webp">
+        <img src="{{ site.baseurl }}/image/index/logo.png" alt="タイトルロゴ">
+      </picture>
     </a>
 
     <div class="footer-nav-container">
       <aside class="sns-container">
         <a class="sns-circle" href="https://x.com/ochite_H_O" target="_blank" rel="noopener">
-          <span class="AweSomeFont-Brands x-icon"></span>
+          <span class="AweSomeFont-Brands x-icon" aria-label="X（旧Twitter）"></span>
         </a>
         <a class="sns-circle" href="#" target="_blank" rel="noopener">
           <span class="AweSomeFont-Brands steam-icon"></span>

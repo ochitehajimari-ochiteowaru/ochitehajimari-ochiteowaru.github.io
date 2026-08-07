@@ -285,34 +285,33 @@ body.font-changed h2 {
 }
 
 #story {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../image/index/story.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), image-set(url("../image/index/story.webp") type("image/webp"), url("../image/index/story.jpg") type("image/jpeg"));
 }
 
 #characters {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/character.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), image-set(url("../image/index/character.webp") type("image/webp"), url("../image/index/character.jpg") type("image/jpeg"));
 }
 
 #info {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../image/index/info.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), image-set(url("../image/index/info.webp") type("image/webp"), url("../image/index/info.jpg") type("image/jpeg"));
 }
 
 #store {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/store.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), image-set(url("../image/index/store.webp") type("image/webp"), url("../image/index/store.jpg") type("image/jpeg"));
 }
 
 #account {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/account.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), image-set(url("../image/index/account.webp") type("image/webp"), url("../image/index/account.jpg") type("image/jpeg"));
 }
 
 #contact {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../image/index/contact.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), image-set(url("../image/index/contact.webp") type("image/webp"), url("../image/index/contact.jpg") type("image/jpeg"));
   margin-bottom: 0;
 }
 
 #characters h3 {
   margin-bottom: 0;
 }
-#characters 
 
 #info table {
   border-collapse: separate;

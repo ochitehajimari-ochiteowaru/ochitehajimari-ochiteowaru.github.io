@@ -313,10 +313,15 @@ footer .copyright {
 
 @media screen and (max-width: 48rem) {
 
+    p,
     body,
     button {
         line-height: 1.5;
         /* この数値を大きくすればスマホの文字全体が大きくなります */
         font-size: 0.9375rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
     }
 }
